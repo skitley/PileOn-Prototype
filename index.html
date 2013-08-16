@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>PileOn - Prototype</title>
+		<meta charset="utf-8">
+		<meta name="author" content="Tim Leisio">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="A civic app that enables crowdsourcing of free materials that government organizations let loose on citizens.">
+		
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+		<link href="css/reset.css" rel="stylesheet" type="text/css">
+		<link href="css/index.css" rel="stylesheet" type="text/css">
+		<link href="fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+		
+		<!--<script type="text/javascript" src="js/libs/ko.js"></script>-->
+		<!--<script type="text/javascript" src="js/libs/quo.js"></script>-->
+		
+	</head>
+	
+	<body id="app" data-page="home">
+		<div id="topnav">
+			<div class="search">
+				<div class="icon-search icon-large"></div>
+				<p>Search</p>
+			</div>
+			<div class="logo">
+				<h1><a href="index.html">PileOn <span style="font-size:0.5em;font-weight:400;">(prototype)</span></a></h1>
+				<p>Free piles of materials near you!</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="materials">
+			<div class="material" data-material="dirt">
+				<img src="http://placehold.it/50x50" alt="dirt icon placeholder" />
+				<h1>Dirt</h1>
+				<p class="numlocs">-</p>
+				<div class="icon icon-circle-arrow-right icon-2x"></div>
+			</div>
+			<div class="material" data-material="woodchips">
+				<img src="http://placehold.it/50x50" alt="wood icon placeholder" />
+				<h1>Woodchips</h1>
+				<p class="numlocs">4 locations!</p>
+				<div class="icon icon-circle-arrow-right icon-2x"></div>
+			</div>
+			<div class="material" data-material="sticks">
+				<img src="http://placehold.it/50x50" alt="sticks icon placeholder" />
+				<h1>Sticks</h1>
+				<p class="numlocs">-</p>
+				<div class="icon icon-circle-arrow-right icon-2x"></div>
+			</div>
+			<div class="material" data-material="leaves">
+				<img src="http://placehold.it/50x50" alt="leaves icon placeholder" />
+				<h1>Leaves</h1>
+				<p class="numlocs">-</p>
+				<div class="icon icon-circle-arrow-right icon-2x"></div>
+			</div>
+			<div class="material" data-material="pineneedles">
+				<img src="http://placehold.it/50x50" alt="sticks icon placeholder" />
+				<h1>Pine Needles</h1>
+				<p class="numlocs">-</p>
+				<div class="icon icon-circle-arrow-right icon-2x"></div>
+			</div>
+			<div class="material" data-material="rocks">
+				<img src="http://placehold.it/50x50" alt="rocks icon placeholder" />
+				<h1>Rocks</h1>
+				<p class="numlocs">-</p>
+				<div class="icon icon-circle-arrow-right icon-2x"></div>
+			</div>
+			<div class="material" data-material="pebbles">
+				<img src="http://placehold.it/50x50" alt="pebbles icon placeholder" />
+				<h1>Pebbles</h1>
+				<p class="numlocs">-</p>
+				<div class="icon icon-circle-arrow-right icon-2x"></div>
+			</div>
+		</div>
+		
+		<br />
+		
+		<div id="updates">
+			<h3>PileOn Updates</h3>
+			<div class="update">
+				<p class="date">August 16th, 2013</p>
+				<ul>
+					<li>PileOn prototype created</li>
+					<li>PileOn home page created</li>
+					<li>Locations page created</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="about">
+			<h3>About</h3>
+			<p>PileOn is a web app that connects people to nearby, free piles of materials.</p>
+			<p>PileOn was initiated by <a href="http://www.opentwincities.org/">Open Twin Cities,</a> a <a href="http://codeforamerica.org/">Code for America</a> brigade, that focuses on improving civic technolgoy for the Twin Cities area.</p>
+			<p>If you're interested in contributing, visit the <a href="#nogo">PileOn github page</a>, or visit the <a href="https://groups.google.com/forum/#!topic/twin-cities-brigade/obapXOdsuAs">google group thread</a> discussing this app.</p>
+		</div>
+		
+		<div id="todo">
+			<h3>Todo</h3>
+			<ul>
+				<li>Create pile details page</li>
+				<li>Create pages for new piles</li>
+				<li>Create pages for updating pile status</li>
+				<li>Refactor to use knockout.js</li>
+				<li>Add gesture interactions</li>
+				<li>Make a kick-ass visual design</li>
+				<li>Create signs for people to print out and use near their pile</li>
+			</ul>
+		</div>
+		
+		<div id="spacer"></div>
+		
+		<div id="actions">
+			<div class="inner">
+				<div class="action">
+					<img src="http://placehold.it/60x60" alt="new pile icon placeholder" />
+					<p>New</p>
+				</div>
+				<div class="action">
+					<img src="http://placehold.it/60x60" alt="pile update icon placeholder" />
+					<p>Update</p>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<div id="debug"></div>
+		
+		<div id="protoinfo">
+			<div class="icon-exclamation"></div>
+		</div>
+		
+		<div id="script">
+			<script type="text/javascript" src="js/global.js"></script>
+			<script type="text/javascript" src="js/index.js"></script>
+		</div>
+	</body>
+	
+</html>
