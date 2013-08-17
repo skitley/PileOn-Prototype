@@ -80,6 +80,15 @@
 		<div id="updates">
 			<h3>PileOn Updates</h3>
 			<div class="update">
+				<p class="date">August 17th, 2013</p>
+				<ul>
+					<li>Pile page created</li>
+					<li>Pile update button process created on home page</li>
+					<li>Pile update page created</li>
+					<li>New pile page created</li>
+				</ul>
+			</div>
+			<div class="update">
 				<p class="date">August 16th, 2013</p>
 				<ul>
 					<li>PileOn prototype created</li>
@@ -99,12 +108,15 @@
 		<div id="todo">
 			<h3>Todo</h3>
 			<ul>
-				<li>Create pile details page</li>
-				<li>Create pages for new piles</li>
-				<li>Create pages for updating pile status</li>
+				<li><strike>Create pile details page</strike></li>
+				<li><strike>Create pages for new piles</strike></li>
+				<li><strike>Create pages for updating pile status</strike></li>
 				<li>Refactor to use knockout.js</li>
-				<li>Add gesture interactions</li>
+				<li>Publish prototype via github pages</li>
+				<li>Add slick interactions</li>
 				<li>Make a kick-ass visual design</li>
+				<li>Implement visuals</li>
+				<li>Do better responsive layout with visuals</li>
 				<li>Create signs for people to print out and use near their pile</li>
 			</ul>
 		</div>
@@ -113,15 +125,38 @@
 		
 		<div id="actions">
 			<div class="inner">
-				<div class="action">
+				<div class="action" data-action="new">
 					<img src="http://placehold.it/60x60" alt="new pile icon placeholder" />
 					<p>New</p>
 				</div>
-				<div class="action">
+				<div class="action" data-action="update">
 					<img src="http://placehold.it/60x60" alt="pile update icon placeholder" />
 					<p>Update</p>
 				</div>
 				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<div id="overlays">
+			<div class="overlay" data-overlay="update">
+				<div class="title">
+					<div class="icon icon-refresh icon-2x"></div>
+					<h1>Update Pile Status</h1>
+					<div class="clear"></div>
+				</div>
+				<hr />
+				<div class="content">
+					<p>Please enter the location ID number. This should be on a sign near your pile.</p>
+					<br />
+					<div class="input">
+						<input id="locid" type="text" value="">
+					</div>
+				</div>
+				<div class="actions">
+					<div class="action action-ok" id="updateOk">OK</div>
+					<div class="action action-cancel" id="updateCancel">Cancel</div>
+					<div class="clear"></div>
+				</div>
 			</div>
 		</div>
 		

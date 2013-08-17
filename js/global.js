@@ -1,6 +1,8 @@
 /* Global Vars */
-var screenWidth = 0;
-var screenHeight = 0;
+var gScreenWidth = 0;
+var gScreenHeight = 0;
+
+var gOverlayActive = false;
 	
 document.onreadystatechange = function() {
 	if (document.readyState == 'interactive') {
@@ -23,6 +25,18 @@ function init() {
 	else if (byID('app').getAttribute('data-page') == 'locations') {
 		// Event listeners for the locations page
 	}
+	else if (byID('app').getAttribute('data-page') == 'pile') {
+		// Event listeners for the pile detail page
+		pileEventListeners();
+	}
+	else if (byID('app').getAttribute('data-page') == 'update') {
+		// Event listeners for the update pile page
+		updateEventListeners();
+	}
+	else if (byID('app').getAttribute('data-page') == 'new') {
+		// Event listeners for the new pile page
+		newEventListeners();
+	}
 	
 	windowResize();
 }
@@ -30,19 +44,23 @@ function init() {
 /** WINDOW RESIZE & LAYOUT **/
 function windowResize() {
 	
-	screenWidth = window.innerWidth;
-	screenHeight = window.innerHeight;
+	gScreenWidth = window.innerWidth;
+	gScreenHeight = window.innerHeight;
 	
 	var appWidth = byID('app').clientWidth;
 	var actionsHeight = byID('actions').clientHeight;
 	
-	byID('app').style.height =  screenHeight + "px";
+	byID('app').style.height =  gScreenHeight + "px";
 	byID('actions').style.width = appWidth + "px";
 	
 	byID('spacer').style.width = appWidth + "px";
 	byID('spacer').style.height = actionsHeight + "px";
 	
-	debug(screenWidth + 'x' + screenHeight);
+	if (gOverlayActive == true) {
+		byID('overlays').style.height = gScreenHeight + "px";
+	}
+	
+	debug(gScreenWidth + 'x' + gScreenHeight);
 }
 
 

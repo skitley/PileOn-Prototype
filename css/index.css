@@ -4,8 +4,8 @@ html {
 	overflow:hidden;
 }
 body {
-	min-width:320px;
-	max-width:768px;
+	min-width:20em;
+	max-width:48em;
 	margin:0 auto;
 	color:#363636;
 	overflow:auto;
@@ -151,6 +151,16 @@ li {
 .action p {
 	font-size:0.8em;
 }
+.action-ok {
+	padding:0.8em;
+	border-radius:0.2em;
+	float:right;
+}
+.action-cancel {
+	padding:0.8em;
+	border-radius:0.2em;
+	float:left;
+}
 
 #updates {
 	padding:1em;
@@ -230,6 +240,235 @@ li {
 .location .details address {
 	font-size:0.8em;
 }
+
+
+#pile {
+	margin:1em 0 0 0;
+}
+#pile h1 {
+	margin:0.4em;
+	color:#AAA;
+	font-size:1.5em;
+}
+.info {
+	margin:0 0 0.2em 0;
+	padding:0.4em;
+	background:#FFF;
+}
+.info hr {
+	margin:0.2em 0 0.4em 0;
+	border:none;
+	border-bottom:1px solid #EEE;
+}
+.info .id {
+	font-size:0.9em;
+	font-weight:800;
+}
+.info .profile {
+	width:50%;
+	float:left;
+	position:relative;
+}
+.info .profile img {
+	width:100%;
+}
+.info .details {
+	width:50%;
+	float:left;
+	text-align:center;
+}
+.info .details hr {
+	margin:0.5em;
+	border:none;
+	border-bottom:1px solid #EEE;
+}
+.info .details .spacer {
+	height:1.2em;
+	width:100%;
+}
+.info .details .value {
+	font-size:1.5em;
+}
+.info .details .units {
+	font-size:0.7em;
+}
+.info .details address {
+	font-size:0.8em;
+}
+#pile .description {
+	margin:0.8em;
+}
+#pile .description h1 {
+	margin:0;
+	color:#131313;
+	font-size:1em;
+}
+
+#history {
+
+}
+.entry {
+	margin:0.4em 0.8em;
+	padding:0.8em;
+	border:2px solid #AAA;
+	border-radius:1em;
+}
+.entry h1 {
+	font-size:0.9em;
+}
+
+
+#question {
+	
+}
+#question h1 {
+	font-size:2em;
+	text-align:center;
+}
+.option {
+	margin:0;
+	padding:0.4em;
+	text-align:center;
+}
+.option:hover {
+	background:#FFF;
+	cursor:pointer;
+}
+.option h2 {
+	margin:0;
+	font-size:1em;
+}
+#question .selected {
+	background:#0072BC;
+}
+#question .selected h2 {
+	color:#FFF;
+}
+
+
+#form {
+	margin:0.8em;
+}
+
+
+#address {
+	margin:0 0 1em 0;
+}
+#address h1 {
+	font-size:1em;
+}
+#address h6 {
+	font-size:0.9em;
+	font-style:oblique;
+	font-weight:400;
+}
+#address .action {
+	width:inherit;
+	padding:0.8em;
+}
+
+#types {
+	margin:0 0 1em 0;
+}
+#types h1 {
+	font-size:1em;
+}
+.type {
+	width:3.75em;
+	height:3.75em;
+	margin:0 0.2em 0.2em 0;
+	background:#DDD;
+	float:left;
+	overflow:hidden;
+}
+.type:hover {
+	background:#FFF;
+	cursor:pointer;
+}
+#types .selected {
+	background:#0072BC;
+	color:#FFF;
+}
+
+
+#amount {
+	margin:0 0 1em 0;
+}
+#amount h1 {
+	font-size:1em;
+}
+#amount .option {
+	
+}
+#amount .option img {
+	float:left;
+}
+#amount .option h1 {
+	float:left;
+}
+#amount .selected {
+	background:#0072BC;
+}
+#amount .selected h2 {
+	color:#FFF;
+}
+
+#description {
+
+}
+#description h1 {
+	font-size:1em;
+}
+#description textarea {
+	width:16em;
+	margin:0 auto;
+}
+#description p {
+	font-size:0.8em;
+}
+
+
+#overlays {
+	width:100%;
+	max-width:48em;
+	margin:0 auto;
+	background:#FFF;
+	display:none;
+	position:fixed;
+	top:0;
+}
+.overlay {
+	padding:1em;
+}
+.overlay .title {
+	margin:0 0 0.8em 0;
+	font-size:0.8em;
+}
+.overlay .title .icon {
+	margin:0 0.4em 0 0;
+	float:left;
+}
+.overlay .title h1 {
+	font-size:1.8em;
+}
+.overlay .content .input {
+	margin:0 0 0.8em 0;
+	text-align:center;
+}
+.overlay .content .input input {
+	width:4em;
+	padding:0.2em 0.4em;
+	border:2px solid #AAA;
+	border-radius:0.4em;
+	font-family:"Open Sans", Helvetica, Arial, sans-serif;
+	font-size:3em;
+	outline:none;
+	text-align:center;
+}
+.overlay .content input:focus {
+	border:2px solid #0072BC;
+}
+
 
 /* clears */
 .clear {

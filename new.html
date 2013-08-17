@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>PileOn - Woodchips</title>
+		<meta charset="utf-8">
+		<meta name="author" content="Tim Leisio">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="A civic app that enables crowdsourcing of free materials that government organizations let loose on citizens.">
+		
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+		<link href="css/reset.css" rel="stylesheet" type="text/css">
+		<link href="css/index.css" rel="stylesheet" type="text/css">
+		<link href="fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+		
+		<!--<script type="text/javascript" src="js/libs/ko.js"></script>-->
+		<!--<script type="text/javascript" src="js/libs/quo.js"></script>-->
+		
+	</head>
+	
+	<body id="app" data-page="new">
+		
+		<div id="form">
+			
+			<div id="address">
+				<h1>What is the location of the pile?</h1>
+				<div class="action">From GPS</div>
+				<br /><br />
+				<h6>Manual Entry</h6>
+				<input type="text" value="address 1">
+				<input type="text" value="address 2">
+				<input type="text" value="city">
+				<input type="text" value="state">
+				<input type="text" value="zip">
+			</div>
+			
+			<div id="types">
+				<h1>What type of material do you have?</h1>
+				<div class="type" data-type="dirt">Dirt</div>
+				<div class="type" data-type="woodchips">Woodchips</div>
+				<div class="type" data-type="sticks">Sticks</div>
+				<div class="type" data-type="leaves">Leaves</div>
+				<div class="type" data-type="pineneedles">Pine Needles</div>
+				<div class="type" data-type="rocks">Rocks</div>
+				<div class="type" data-type="pebbles">Pebbles</div>
+				<div class="clear"></div>
+			</div>
+			
+			<div id="amount">
+				<h1>How much material do you have?</h1>
+				<div class="option" data-option="tons">
+					<img src="http://placehold.it/140x50" alt="tons image" />
+					<h2>Tons</h2>
+					<div class="clear"></div>
+				</div>
+				<div class="option" data-option="lots">
+					<img src="http://placehold.it/140x50" alt="lots image" />
+					<h2>Lots</h2>
+					<div class="clear"></div>
+				</div>
+				<div class="option" data-option="good">
+					<img src="http://placehold.it/140x50" alt="good image" />
+					<h2>Plenty</h2>
+					<div class="clear"></div>
+				</div>
+				<div class="option" data-option="enough">
+					<img src="http://placehold.it/140x50" alt="enough image" />
+					<h2>Enough</h2>
+					<div class="clear"></div>
+				</div>
+				<div class="option" data-option="some">
+					<img src="http://placehold.it/140x50" alt="some image" />
+					<h2>Some</h2>
+					<div class="clear"></div>
+				</div>
+				<div class="option" data-option="little">
+					<img src="http://placehold.it/140x50" alt="little image" />
+					<h2>Little</h2>
+					<div class="clear"></div>
+				</div>
+			</div>
+		
+			<div id="description">
+				<h1>Notes (optional)</h1>
+				<textarea></textarea>
+				<p>(140 max character)</p>
+			</div>
+			
+		</div>
+		
+		<div id="spacer"></div>
+		
+		<div id="actions">
+			<div class="inner">
+				<div class="action" data-action="cancel">
+					<img src="http://placehold.it/60x60" alt="cancel icon placeholder" />
+					<p>Cancel</p>
+				</div>
+				<div class="action" data-action="submit">
+					<img src="http://placehold.it/60x60" alt="submit icon placeholder" />
+					<p>Submit</p>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<div id="debug"></div>
+		
+		<div id="protoinfo">
+			<div class="icon-exclamation"></div>
+		</div>
+		
+		<div id="script">
+			<script type="text/javascript" src="js/global.js"></script>
+			<script type="text/javascript" src="js/new.js"></script>
+		</div>
+	</body>
+	
+</html>

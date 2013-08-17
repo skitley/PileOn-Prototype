@@ -1,18 +1,11 @@
 /* Vars */
 
 /* EVENT LISTENERS */
-function something() {
+function locationsEventListeners() {
 	
 }
 
 /** EVENT HANDLERS **/
 function changePage() {	
-	var page = event.currentTarget.getAttribute('data-material');
 	
-	if (page == "woodchips") {
-		window.location.assign(page + '.html');
-	}
-	else {
-		alert(page + " coming soon.");
-	}
 }
