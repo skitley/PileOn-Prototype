@@ -5,19 +5,24 @@
 		<meta charset="utf-8">
 		<meta name="author" content="Tim Leisio">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="A civic app that enables crowdsourcing of free materials that government organizations let loose on citizens.">
+		<meta name="description" content="A civic app that enables crowdsourcing of free piles of materials.">
 		
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
 		<link href="css/reset.css" rel="stylesheet" type="text/css">
 		<link href="css/index.css" rel="stylesheet" type="text/css">
 		<link href="fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css">
 		
-		<!--<script type="text/javascript" src="js/libs/ko.js"></script>-->
-		<!--<script type="text/javascript" src="js/libs/quo.js"></script>-->
+		<script type="text/javascript" src="js/libs/modernizr.js"></script>
+		<script type="text/javascript" src="js/libs/quo.js"></script>
+		<script type="text/javascript" src="js/libs/ko.js"></script>
+		<script type="text/javascript" src="js/AppViewModel.js"></script>
+		<script type="text/javascript" src="js/AppViewController.js"></script>
+		
+		<script type="text/javascript" src="js/global.js"></script>
 		
 	</head>
 	
-	<body id="app" data-page="home">
+	<body>
 		<div id="topnav">
 			<div class="search">
 				<div class="icon-search icon-large"></div>
@@ -30,100 +35,150 @@
 			<div class="clear"></div>
 		</div>
 		
-		<div id="materials">
-			<div class="material" data-material="dirt">
-				<img src="http://placehold.it/50x50" alt="dirt icon placeholder" />
-				<h1>Dirt</h1>
-				<p class="numlocs">-</p>
-				<div class="icon icon-circle-arrow-right icon-2x"></div>
-			</div>
-			<div class="material" data-material="woodchips">
-				<img src="http://placehold.it/50x50" alt="wood icon placeholder" />
-				<h1>Woodchips</h1>
-				<p class="numlocs">4 locations!</p>
-				<div class="icon icon-circle-arrow-right icon-2x"></div>
-			</div>
-			<div class="material" data-material="sticks">
-				<img src="http://placehold.it/50x50" alt="sticks icon placeholder" />
-				<h1>Sticks</h1>
-				<p class="numlocs">-</p>
-				<div class="icon icon-circle-arrow-right icon-2x"></div>
-			</div>
-			<div class="material" data-material="leaves">
-				<img src="http://placehold.it/50x50" alt="leaves icon placeholder" />
-				<h1>Leaves</h1>
-				<p class="numlocs">-</p>
-				<div class="icon icon-circle-arrow-right icon-2x"></div>
-			</div>
-			<div class="material" data-material="pineneedles">
-				<img src="http://placehold.it/50x50" alt="sticks icon placeholder" />
-				<h1>Pine Needles</h1>
-				<p class="numlocs">-</p>
-				<div class="icon icon-circle-arrow-right icon-2x"></div>
-			</div>
-			<div class="material" data-material="rocks">
-				<img src="http://placehold.it/50x50" alt="rocks icon placeholder" />
-				<h1>Rocks</h1>
-				<p class="numlocs">-</p>
-				<div class="icon icon-circle-arrow-right icon-2x"></div>
-			</div>
-			<div class="material" data-material="pebbles">
-				<img src="http://placehold.it/50x50" alt="pebbles icon placeholder" />
-				<h1>Pebbles</h1>
-				<p class="numlocs">-</p>
-				<div class="icon icon-circle-arrow-right icon-2x"></div>
-			</div>
+		<div id="pageTracker">
+			<div class="activeBlock" data-bind="style: {left: (currentPage() * 25) + '%'}"></div>
+			<div class="pageBlock"></div>
+			<div class="pageBlock"></div>
+			<div class="pageBlock"></div>
+			<div class="pageBlock"></div>
+			<div class="clear"></div>
 		</div>
 		
-		<br />
-		
-		<div id="updates">
-			<h3>PileOn Updates</h3>
-			<div class="update">
-				<p class="date">August 17th, 2013</p>
-				<ul>
-					<li>Pile page created</li>
-					<li>Pile update button process created on home page</li>
-					<li>Pile update page created</li>
-					<li>New pile page created</li>
-				</ul>
+		<div id="pageWrap" data-bind="style: {width: viewportWidth()+'px', height: (viewportHeight()-137)+'px'}">
+		<!-- height needs to = the current page height... -->
+		<div id="pageWrapInner" data-bind="style: {width: (viewportWidth()*pageCount())+'px', left: (0 + (-currentPage() * viewportWidth()))+'px'}">
+			<!-- PAGE1 -->
+			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}, css: {'page-active': currentPage() == 0}">
+				<div id="categories" data-bind="foreach: categories">
+					<div class="category" data-category="" data-bind="attr: {'data-category': id}, click: nextPage ">
+						<img src="http://placehold.it/50x50" alt="icon placeholder" />
+						<h1 data-bind="text: name"></h1>
+						<!-- ko if: numPiles() > 1 -->
+						<p class="numlocs"><span data-bind="text: numPiles"></span> Locations!</p>
+						<!-- /ko -->
+						<!-- ko if: numPiles() == 1 -->
+						<p class="numlocs"><span data-bind="text: numPiles"></span> Location!</p>
+						<!-- /ko -->
+						<div class="icon icon-circle-arrow-right icon-2x"></div>
+					</div>
+				</div>
+				
+				<br />
+				
+				<div id="about">
+					<h3>About</h3>
+					<p>PileOn is a web app that connects people to nearby, free piles of materials.</p>
+					<p>PileOn was initiated by <a href="http://www.opentwincities.org/">Open Twin Cities,</a> a <a href="http://codeforamerica.org/">Code for America</a> brigade, that focuses on improving civic technology for the Twin Cities area.</p>
+					<p>If you're interested in contributing, visit the <a href="https://github.com/skitley/PileOn-Prototype">PileOn github page</a>, or visit the <a href="https://groups.google.com/forum/#!topic/twin-cities-brigade/obapXOdsuAs">google group thread</a> discussing this app.</p>
+				</div>
+				
+				<div id="updates">
+					<h3>PileOn Updates</h3>
+					<div class="update">
+						<p class="date">August 19th, 2013</p>
+						<ul>
+							<li>Continue knockout integration</li>
+							<li>Added page identifier bar</li>
+							<li>Layout and interaction details</li>
+							<li>Learned a lot</li>
+						</ul>
+					</div>
+					<div class="update">
+						<p class="date">August 18th, 2013</p>
+						<ul>
+							<li>Started knockout integration</li>
+							<li>Converted prototype to one page in response to knockout integration</li>
+						</ul>
+					</div>
+					<div class="update">
+						<p class="date">August 17th, 2013</p>
+						<ul>
+							<li>Pile page created</li>
+							<li>Pile update button process created on home page</li>
+							<li>Pile update page created</li>
+							<li>New pile page created</li>
+						</ul>
+					</div>
+					<div class="update">
+						<p class="date">August 16th, 2013</p>
+						<ul>
+							<li>PileOn prototype created</li>
+							<li>PileOn home page created</li>
+							<li>Locations page created</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div id="todo">
+					<h3>Todo</h3>
+					<ul>
+						<li><strike>Create pile details page</strike></li>
+						<li><strike>Create pages for new piles</strike></li>
+						<li><strike>Create pages for updating pile status</strike></li>
+						<li>Refactor to use knockout.js <span style="color:#009933;">(in progress)</span></li>
+						<li>Figure out if there's a way to fix the scrolling for the pages... <span style="color:#009933;">(in progress)</span></li>
+						<li>Add slick interactions <span style="color:#009933;">(in progress)</span></li>
+						<li>Re-implement details, new pile and update pile pages</li>
+						<li>Publish prototype via github pages</li>
+						<li>Make a kick-ass visual design</li>
+						<li>Implement visuals</li>
+						<li>Do better responsive layout with visuals</li>
+						<li>Create signs for people to print out and use near their pile</li>
+					</ul>
+				</div>
+				
 			</div>
-			<div class="update">
-				<p class="date">August 16th, 2013</p>
-				<ul>
-					<li>PileOn prototype created</li>
-					<li>PileOn home page created</li>
-					<li>Locations page created</li>
-				</ul>
+		
+			<!-- PAGE2 -->
+			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}, css: {'page-active': currentPage() == 1}">
+				<!-- ko foreach: categories -->
+				<!-- ko if: active -->
+				<h1 data-bind="text: name"></h1>
+				<!-- ko foreach: piles -->
+				<div class="location">
+					<div class="profile">
+						<div class="id">ID #<span data-bind="text: id"></span></div>
+						<hr />
+						<img src="http://placehold.it/256x256" alt="pile image" />
+					</div>
+					<div class="details">
+						<div class="spacer"></div>
+						<div class="value">17.4</div>
+						<div class="units">miles away</div>
+						<hr />
+						<div class="status">5+ : 2h</div>
+						<hr />
+						<address>123 Main Street, Minneapolis, MN 55414</address>
+						<hr />
+						<div class="actions">
+							<a href="pile.html">Details <span class="icon-circle-arrow-right"></span></a>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!-- /ko -->
+				<!-- /ko -->
+				<!-- /ko -->
 			</div>
+			
+			<!-- PAGE3 -->
+			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}, css: {'page-active': currentPage() == 2}">
+				<h1>Page 3</h1>
+			</div>
+			
+			<!-- PAGE4 -->
+			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}, css: {'page-active': currentPage() == 3}">
+				<h1>Page 4</h1>
+			</div>
+			
+			<div class="clear"></div>
+			
 		</div>
-		
-		<div id="about">
-			<h3>About</h3>
-			<p>PileOn is a web app that connects people to nearby, free piles of materials.</p>
-			<p>PileOn was initiated by <a href="http://www.opentwincities.org/">Open Twin Cities,</a> a <a href="http://codeforamerica.org/">Code for America</a> brigade, that focuses on improving civic technology for the Twin Cities area.</p>
-			<p>If you're interested in contributing, visit the <a href="https://github.com/skitley/PileOn-Prototype">PileOn github page</a>, or visit the <a href="https://groups.google.com/forum/#!topic/twin-cities-brigade/obapXOdsuAs">google group thread</a> discussing this app.</p>
-		</div>
-		
-		<div id="todo">
-			<h3>Todo</h3>
-			<ul>
-				<li><strike>Create pile details page</strike></li>
-				<li><strike>Create pages for new piles</strike></li>
-				<li><strike>Create pages for updating pile status</strike></li>
-				<li>Refactor to use knockout.js</li>
-				<li>Publish prototype via github pages</li>
-				<li>Add slick interactions</li>
-				<li>Make a kick-ass visual design</li>
-				<li>Implement visuals</li>
-				<li>Do better responsive layout with visuals</li>
-				<li>Create signs for people to print out and use near their pile</li>
-			</ul>
 		</div>
 		
 		<div id="spacer"></div>
 		
-		<div id="actions">
+		<div id="actions" data-bind="style: {width: (viewportWidth())+'px'}">
 			<div class="inner">
 				<div class="action" data-action="new">
 					<img src="http://placehold.it/60x60" alt="new pile icon placeholder" />
@@ -166,10 +221,6 @@
 			<div class="icon-exclamation"></div>
 		</div>
 		
-		<div id="script">
-			<script type="text/javascript" src="js/global.js"></script>
-			<script type="text/javascript" src="js/index.js"></script>
-		</div>
 	</body>
 	
 </html>

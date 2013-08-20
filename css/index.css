@@ -1,4 +1,5 @@
 html {
+	min-width:20em;
 	background:#EEE;
 	font-family:"Open Sans", Helvetica, Arial, sans-serif;
 	overflow:hidden;
@@ -8,7 +9,7 @@ body {
 	max-width:48em;
 	margin:0 auto;
 	color:#363636;
-	overflow:auto;
+	overflow:hidden;
 	position:relative;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -55,16 +56,17 @@ li {
 	background:#212121;
 	box-shadow:0 2px 16px rgba(0,0,0,0.4);
 	color:#FFF;
+	position:relative;
+	z-index:9990;
 }
 
 .logo {
 	padding:0.5em;
 }
 .logo h1 {
-	margin:0 0.5em 0 0;
+	margin:0;
 	color:#FFF;
 	font-size:1.5em;
-	float:left;
 }
 .logo a,
 .logo a:visited {
@@ -72,8 +74,8 @@ li {
 	text-decoration:none;
 }
 .logo p {
-	margin:0.4em 0 0 0;
-	float:left;
+	margin:0 0 0 0.45em;
+	font-size:0.7em;
 }
 
 .search {
@@ -89,25 +91,73 @@ li {
 	font-size:0.8em;
 }
 
-#materials {
-
+#pageTracker {
+	padding:1px 0 2px 0;
+	position:relative;
+	z-index:9991;
+}
+#pageTracker .activeBlock {
+	width:25%;
+	height:4px;
+	background:#0072BC;
+	transition-property:left;
+	transition-duration:0.1s;
+	transition-timing-function:cubic-bezier(0.35,0.05,0.6,1);
+	position:absolute;
+	top:0;
+	left:0;
+}
+#pageTracker .pageBlock {
+	width:24.6%;
+	height:2px;
+	margin:0 0.2%;
+	background:#848484;
+	float:left;
 }
 
-.material {
+#pageWrap {
+	overflow-y:scroll;
+	overflow-x:hidden;
+	position:relative;
+	top:0;
+	left:0;
+}
+#pageWrapInner {
+	transition-property:left;
+	transition-duration:0.1s;
+	transition-timing-function:cubic-bezier(0.35,0.05,0.6,1);
+	position:absolute;
+	top:0;
+	left:0;
+}
+.page {
+	min-width:320px;
+	background:#EEE;
+	float:left;
+}
+.page > h1 {
+	margin:0.4em;
+	font-size:1.5em;
+}
+
+#categories {
+
+}
+.category {
 	margin:0 0 0.2em 0;
 	padding:0.4em;
 	background:#FFF;
 	cursor:pointer;
 	position:relative;
 }
-.material:hover {
+.category:hover {
 	background:#0072BC;
 	color:#FFF;
 }
-.material:hover h1 {
+.category:hover h1 {
 	color:#FFF;
 }
-.material h1 {
+.category h1 {
 	max-width:65%;
 	margin:0;
 	font-size:1.5em;
@@ -116,19 +166,20 @@ li {
 	text-overflow:ellipsis;
 	white-space:nowrap;
 }
-.material img {
+.category img {
 	margin:0 0.4em 0 0;
 	float:left;
 }
-.material .icon {
+.category .icon {
 	position:absolute;
 	top:0.5em;
-	right:0.5em;
+	right:0.8em;
 }
+
 
 #actions {
 	min-width:20em;
-	background:#424242;
+	background:#131313;
 	position:fixed;
 	bottom:0;
 }
@@ -163,10 +214,10 @@ li {
 }
 
 #updates {
-	padding:1em;
+	padding:0 2em 1em 1em;
 }
 .update {
-	margin:0 0 1em 0;
+	margin:0 0 2em 0;
 }
 .update .date {
 	margin:0 0 0.6em 0;
@@ -176,7 +227,7 @@ li {
 }
 
 #about {
-	padding:1em;
+	padding:0 2em 1em 1em;
 	line-height:1.4em;
 }
 #about p {
@@ -184,16 +235,11 @@ li {
 }
 
 #todo {
-	padding:1em;
+	padding:0 2em 1em 1em;
 }
 
 #locations {
 	margin:1em 0 0 0;
-}
-#locations h1 {
-	margin:0.4em;
-	color:#AAA;
-	font-size:1.5em;
 }
 .location {
 	margin:0 0 0.2em 0;
