@@ -44,200 +44,323 @@
 			<div class="clear"></div>
 		</div>
 		
-		<div id="pageWrap" data-bind="style: {width: viewportWidth()+'px', height: (viewportHeight()-137)+'px'}">
-		<!-- height needs to = the current page height... -->
-		<div id="pageWrapInner" data-bind="style: {width: (viewportWidth()*pageCount())+'px', left: (0 + (-currentPage() * viewportWidth()))+'px'}">
-			<!-- PAGE1 -->
-			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
-				<div id="categories" data-bind="foreach: categories">
-					<div class="category" data-category="" data-bind="attr: {'data-category': id}, click: nextPage ">
-						<img src="http://placehold.it/50x50" alt="icon placeholder" />
-						<h1 data-bind="text: name"></h1>
-						<!-- ko if: numPiles() > 1 -->
-						<p class="numlocs"><span data-bind="text: numPiles"></span> Locations!</p>
-						<!-- /ko -->
-						<!-- ko if: numPiles() == 1 -->
-						<p class="numlocs"><span data-bind="text: numPiles"></span> Location!</p>
-						<!-- /ko -->
-						<div class="icon icon-circle-arrow-right icon-2x"></div>
-					</div>
-				</div>
-				
-				<br />
-				
-				<div id="about">
-					<h3>About</h3>
-					<p>PileOn is a web app that connects people to nearby, free piles of materials.</p>
-					<p>PileOn was initiated by <a href="http://www.opentwincities.org/">Open Twin Cities,</a> a <a href="http://codeforamerica.org/">Code for America</a> brigade, that focuses on improving civic technology for the Twin Cities area.</p>
-					<p>If you're interested in contributing, visit the <a href="https://github.com/skitley/PileOn-Prototype">PileOn github page</a>, or visit the <a href="https://groups.google.com/forum/#!topic/twin-cities-brigade/obapXOdsuAs">google group thread</a> discussing this app.</p>
-				</div>
-				
-				<div id="updates">
-					<h3>PileOn Updates</h3>
-					<div class="update">
-						<p class="date">August 19th, 2013</p>
-						<ul>
-							<li>Continue knockout integration</li>
-							<li>Added page identifier bar</li>
-							<li>Layout and interaction details</li>
-							<li>Learned a lot</li>
-							<li>Pile detail page re-added</li>
-						</ul>
-					</div>
-					<div class="update">
-						<p class="date">August 18th, 2013</p>
-						<ul>
-							<li>Started knockout integration</li>
-							<li>Converted prototype to one page in response to knockout integration</li>
-						</ul>
-					</div>
-					<div class="update">
-						<p class="date">August 17th, 2013</p>
-						<ul>
-							<li>Pile page created</li>
-							<li>Pile update button process created on home page</li>
-							<li>Pile update page created</li>
-							<li>New pile page created</li>
-						</ul>
-					</div>
-					<div class="update">
-						<p class="date">August 16th, 2013</p>
-						<ul>
-							<li>PileOn prototype created</li>
-							<li>PileOn home page created</li>
-							<li>Locations page created</li>
-						</ul>
-					</div>
-				</div>
-				
-				<div id="todo">
-					<h3>Todo</h3>
-					<ul>
-						<li><strike>Create pile details page</strike></li>
-						<li><strike>Create pages for new piles</strike></li>
-						<li><strike>Create pages for updating pile status</strike></li>
-						<li>Refactor to use knockout.js <span style="color:#009933;">(in progress)</span></li>
-						<li>Figure out if there's a way to fix the scrolling for the pages... <span style="color:#009933;">(in progress)</span></li>
-						<li>Add slick interactions <span style="color:#009933;">(in progress)</span></li>
-						<li>Re-implement <strike>details</strike>, new pile and update pile pages <span style="color:#009933;">(in progress)</span></li>
-						<li>Re-implement actions bar for each page</li>
-						<li>Publish prototype via github pages</li>
-						<li>Make a kick-ass visual design</li>
-						<li>Implement visuals</li>
-						<li>Do better responsive layout with visuals</li>
-						<li>Create signs for people to print out and use near their pile</li>
-					</ul>
-				</div>
-				
-			</div>
-		
-			<!-- PAGE2 -->
-			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
-				<!-- ko foreach: categories -->
-				<!-- ko if: active -->
-				<h1 data-bind="text: name"></h1>
-				<!-- ko foreach: piles -->
-				<div class="location">
-					<div class="profile">
-						<div class="id">ID #<span data-bind="text: id"></span></div>
-						<hr />
-						<img src="http://placehold.it/256x256" alt="pile image" />
-					</div>
-					<div class="details">
-						<div class="spacer"></div>
-						<div class="value">17.4</div>
-						<div class="units">miles away</div>
-						<hr />
-						<div class="status">5+ : 2h</div>
-						<hr />
-						<address>123 Main Street, Minneapolis, MN 55414</address>
-						<hr />
-						<div class="actions">
-							<a href="#nogo" data-bind="click: nextPage, attr: {'data-pile': id}">Details <span class="icon-circle-arrow-right"></span></a>
+		<div id="pageWrap" data-bind="style: {width: viewportWidth()+'px', height: (viewportHeight()-100)+'px'}">
+			<div id="pageWrapInner" data-bind="style: {width: (viewportWidth()*pageCount())+'px', left: (0 + (-currentPage() * viewportWidth()))+'px'}">
+				<!-- PAGE1 -->
+				<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
+					<div id="categories" data-bind="foreach: categories">
+						<div class="category" data-category="" data-bind="attr: {'data-category': id}, click: nextPage ">
+							<img src="http://placehold.it/50x50" alt="icon placeholder" />
+							<h1 data-bind="text: name"></h1>
+							<!-- ko if: numPiles() > 1 -->
+							<p class="numlocs"><span data-bind="text: numPiles"></span> Locations!</p>
+							<!-- /ko -->
+							<!-- ko if: numPiles() == 1 -->
+							<p class="numlocs"><span data-bind="text: numPiles"></span> Location!</p>
+							<!-- /ko -->
+							<div class="icon icon-circle-arrow-right icon-2x"></div>
 						</div>
 					</div>
-					<div class="clear"></div>
+					
+					<br />
+					
+					<div id="about">
+						<h3>About</h3>
+						<p>PileOn is a web app that connects people to nearby, free piles of materials.</p>
+						<p>PileOn was initiated by <a href="http://www.opentwincities.org/">Open Twin Cities,</a> a <a href="http://codeforamerica.org/">Code for America</a> brigade, that focuses on improving civic technology for the Twin Cities area.</p>
+						<p>If you're interested in contributing, visit the <a href="https://github.com/skitley/PileOn-Prototype">PileOn github page</a>, or visit the <a href="https://groups.google.com/forum/#!topic/twin-cities-brigade/obapXOdsuAs">google group thread</a> discussing this app.</p>
+					</div>
+					
+					<div id="comingsoon">
+						<h3>Coming Soon</h3>
+						<ul>
+							<li>Better vertical scrolling!</li>
+							<li>Real working forms!</li>
+							<li>Lists AND maps!</li>
+							<li>Location entering and GPS!</li>
+							<li>More realistic data!</li>
+							<li>A kick-ass visual design!</li>
+							<li>A prototype that's published to the world!</li>
+							<li>Custom, printable signs for you to print out and use for your pile!</li>
+						</ul>
+					</div>
+					
+					<div id="updates">
+						<h3>PileOn Updates</h3>
+						<div class="update">
+							<p class="date">August 20th, 2013</p>
+							<ul>
+								<li>Continue knockout integration</li>
+								<li>Action bar now again working</li>
+								<li>Updated layout of locations list view</li>
+								<li>Moved "todo" tasks to github issues list</li>
+								<li>Changed main page "todo" section into a "coming soon" section</li>
+							</ul>
+						</div>
+						<div class="update">
+							<p class="date">August 19th, 2013</p>
+							<ul>
+								<li>Continue knockout integration</li>
+								<li>Added page identifier bar</li>
+								<li>Layout and interaction details</li>
+								<li>Learned a lot</li>
+								<li>Pile detail page re-added</li>
+							</ul>
+						</div>
+						<div class="update">
+							<p class="date">August 18th, 2013</p>
+							<ul>
+								<li>Started knockout integration</li>
+								<li>Converted prototype to one page in response to knockout integration</li>
+							</ul>
+						</div>
+						<div class="update">
+							<p class="date">August 17th, 2013</p>
+							<ul>
+								<li>Pile page created</li>
+								<li>Pile update button process created on home page</li>
+								<li>Pile update page created</li>
+								<li>New pile page created</li>
+							</ul>
+						</div>
+						<div class="update">
+							<p class="date">August 16th, 2013</p>
+							<ul>
+								<li>PileOn prototype created</li>
+								<li>PileOn home page created</li>
+								<li>Locations page created</li>
+							</ul>
+						</div>
+					</div>
+					
 				</div>
-				<!-- /ko -->
-				<!-- /ko -->
-				<!-- /ko -->
-			</div>
 			
-			<!-- PAGE3 -->
-			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
-				<div id="pile">
+				<!-- PAGE2 -->
+				<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
 					<!-- ko foreach: categories -->
 					<!-- ko if: active -->
-					<!-- ko foreach: piles -->
-					<!-- ko if: active -->
-					<h1><span data-bind="text: category"></span> Pile #<span data-bind="text: id"></span></h1>
-					<div class="info">
-						<div class="profile">
-							<div class="id">ID #<span data-bind="text: id"></span></div>
-							<hr />
-							<img src="http://placehold.it/256x256" alt="map image" />
+					<h1 data-bind="text: name"></h1>
+					<div id="location">
+						<div class="header">
+							<div class="col id">ID</div>
+							<div class="col amount">Amt</div>
+							<div class="col update">Stat</div>
+							<div class="col distance">Miles</div>
+							<div class="col address">Addy</div>
+							<div class="col"></div>
+							<div class="clear"></div>
 						</div>
-						<div class="details">
-							<div class="spacer"></div>
-							<div class="value">17.4</div>
-							<div class="units">miles away</div>
-							<hr />
-							<div class="status">5+ : 2h</div>
-							<hr />
-							<address>123 Main Street, Minneapolis, MN 55414</address>
-							<hr />
-							<div class="actions">
-								
-							</div>
+						<!-- ko foreach: piles -->
+						<div class="row" data-bind="click: nextPage, attr: {'data-pile': id}">
+							<div class="col id" data-bind="text: id"></div>
+							<div class="col amount">5+</div>
+							<div class="col update">2h</div>
+							<div class="col distance">17.4</div>
+							<div class="col address">123 Main Street, Minneapolis MN, 55414</div>
+							<div class="col arrow"><div class="icon-circle-arrow-right"></div></div>
+							<div class="clear"></div>
 						</div>
-						<div class="clear"></div>
+						<!-- /ko -->
 					</div>
-					<div class="description">
-						<h3>Notes</h3>
-						<p>Go in the park towards the right most trail and walk until you see the sign. Bring your own shovel!</p>
-					</div>
-					<div id="history">
-						<div class="entry">
-							<h1>2 Hours Ago</h1>
-							<img src="http://placehold.it/100x100" alt="pile status image" />
-						</div>
-						<div class="entry">
-							<h1>5 Hours Ago</h1>
-							<img src="http://placehold.it/100x100" alt="pile status image" />
-						</div>
-						<div class="entry">
-							<h1>1 Day Ago</h1>
-							<img src="http://placehold.it/100x100" alt="pile status image" />
-						</div>
-					</div>
-					<!-- /ko -->
-					<!-- /ko -->
 					<!-- /ko -->
 					<!-- /ko -->
 				</div>
+				
+				<!-- PAGE3 -->
+				<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
+					<div id="pile">
+						<!-- ko foreach: categories -->
+						<!-- ko if: active -->
+						<!-- ko foreach: piles -->
+						<!-- ko if: active -->
+						<h1><span data-bind="text: category"></span> Pile #<span data-bind="text: id"></span></h1>
+						<div class="info">
+							<div class="profile">
+								<div class="id">ID #<span data-bind="text: id"></span></div>
+								<hr />
+								<img src="http://placehold.it/256x256" alt="map image" />
+							</div>
+							<div class="details">
+								<div class="spacer"></div>
+								<div class="value">17.4</div>
+								<div class="units">miles away</div>
+								<hr />
+								<div class="status">5+ : 2h</div>
+								<hr />
+								<address>123 Main Street, Minneapolis, MN 55414</address>
+								<hr />
+								<div class="actions">
+									
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="description">
+							<h3>Notes</h3>
+							<p>Go in the park towards the right most trail and walk until you see the sign. Bring your own shovel!</p>
+						</div>
+						<div id="history">
+							<div class="entry">
+								<h1>2 Hours Ago</h1>
+								<img src="http://placehold.it/100x100" alt="pile status image" />
+							</div>
+							<div class="entry">
+								<h1>5 Hours Ago</h1>
+								<img src="http://placehold.it/100x100" alt="pile status image" />
+							</div>
+							<div class="entry">
+								<h1>1 Day Ago</h1>
+								<img src="http://placehold.it/100x100" alt="pile status image" />
+							</div>
+						</div>
+						<!-- /ko -->
+						<!-- /ko -->
+						<!-- /ko -->
+						<!-- /ko -->
+					</div>
+				</div>
+				
+				<!-- PAGE4 -->
+				<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
+					<h1>Page 4</h1>
+				</div>
+				
+				<div class="clear"></div>
+				
 			</div>
-			
-			<!-- PAGE4 -->
-			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
-				<h1>Page 4</h1>
-			</div>
-			
-			<div class="clear"></div>
-			
 		</div>
+		
+		<div id="newPileForm" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-40)+'px', left: createPileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
+			<div class="inner">
+				<div id="address">
+					<h1>What is the location of the pile?</h1>
+					<div class="action">From GPS</div>
+					<br /><br />
+					<h6>Manual Entry</h6>
+					<input type="text" value="address 1">
+					<input type="text" value="address 2">
+					<input type="text" value="city">
+					<input type="text" value="state">
+					<input type="text" value="zip">
+				</div>
+				
+				<div id="types">
+					<h1>What type of material do you have?</h1>
+					<div class="type" data-type="dirt">Dirt</div>
+					<div class="type" data-type="woodchips">Woodchips</div>
+					<div class="type" data-type="sticks">Sticks</div>
+					<div class="type" data-type="leaves">Leaves</div>
+					<div class="type" data-type="pineneedles">Pine Needles</div>
+					<div class="type" data-type="rocks">Rocks</div>
+					<div class="type" data-type="pebbles">Pebbles</div>
+					<div class="clear"></div>
+				</div>
+				
+				<div id="amount">
+					<h1>How much material do you have?</h1>
+					<div class="option" data-option="tons">
+						<img src="http://placehold.it/140x50" alt="tons image" />
+						<p>Tons</p>
+						<div class="clear"></div>
+					</div>
+					<div class="option" data-option="lots">
+						<img src="http://placehold.it/140x50" alt="lots image" />
+						<p>Lots</p>
+						<div class="clear"></div>
+					</div>
+					<div class="option" data-option="good">
+						<img src="http://placehold.it/140x50" alt="good image" />
+						<p>Plenty</p>
+						<div class="clear"></div>
+					</div>
+					<div class="option" data-option="enough">
+						<img src="http://placehold.it/140x50" alt="enough image" />
+						<p>Enough</p>
+						<div class="clear"></div>
+					</div>
+					<div class="option" data-option="some">
+						<img src="http://placehold.it/140x50" alt="some image" />
+						<p>Some</p>
+						<div class="clear"></div>
+					</div>
+					<div class="option" data-option="little">
+						<img src="http://placehold.it/140x50" alt="little image" />
+						<p>Little</p>
+						<div class="clear"></div>
+					</div>
+				</div>
+			
+				<div id="description">
+					<h1>Notes (optional)</h1>
+					<textarea></textarea>
+					<p>(140 max character)</p>
+				</div>
+			</div>
+		</div>
+		
+		<div id="updatePileForm" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-40)+'px', left: updatePileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
+			<div class="inner">
+				<h1>Pile ID#</h1>
+				<div><input type="text" /></div>
+				<h1>How many woodchips are left?</h1>
+				<div class="option" data-option="tons">
+					<p>Tons</p>
+					<img src="http://placehold.it/280x100" alt="tons image" />
+				</div>
+				<div class="option" data-option="lots">
+					<p>Lots</p>
+					<img src="http://placehold.it/280x100" alt="lots image" />
+				</div>
+				<div class="option" data-option="good">
+					<p>Plenty</p>
+					<img src="http://placehold.it/280x100" alt="good image" />
+				</div>
+				<div class="option" data-option="enough">
+					<p>Enough</p>
+					<img src="http://placehold.it/280x100" alt="enough image" />
+				</div>
+				<div class="option" data-option="some">
+					<p>Some</p>
+					<img src="http://placehold.it/280x100" alt="some image" />
+				</div>
+				<div class="option" data-option="little">
+					<p>Little</p>
+					<img src="http://placehold.it/280x100" alt="little image" />
+				</div>
+				<div class="option" data-option="none">
+					<p>None</p>
+					<img src="http://placehold.it/280x100" alt="none image" />
+				</div>
+			</div>
 		</div>
 		
 		<div id="spacer"></div>
 		
 		<div id="actions" data-bind="style: {width: (viewportWidth())+'px'}">
 			<div class="inner">
-				<div class="action" data-action="new">
-					<img src="http://placehold.it/60x60" alt="new pile icon placeholder" />
+				<div class="action" data-action="new" data-bind="style: {display: currentPage() == 0 && createPileProcessActive() == false && updatePileProcessActive() == false ? 'block' : 'none'}, click:  activateCreatePileProcess">
 					<p>New</p>
 				</div>
-				<div class="action" data-action="update">
-					<img src="http://placehold.it/60x60" alt="pile update icon placeholder" />
+				<div class="action" data-action="update" data-bind="style: {display: (currentPage() == 0 || currentPage() == 2) && createPileProcessActive() == false && updatePileProcessActive() == false ? 'block' : 'none'}, click: updatePile">
 					<p>Update</p>
+				</div>
+				<div class="action" data-action="listview" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}">
+					<p>List View</p>
+				</div>
+				<div class="action" data-action="mapview" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}">
+					<p>Map View</p>
+				</div>
+				<div class="action" data-action="yourlocation" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}">
+					<p>Your Location</p>
+				</div>
+				<div class="action" data-action="gps" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}">
+					<p>GPS</p>
+				</div>
+				<div class="action" data-action="cancel" data-bind="style: {display: createPileProcessActive() == true || updatePileProcessActive() == true ? 'block' : 'none'}, click: cancelActiveProcess">
+					<p>Cancel</p>
+				</div>
+				<div class="action" data-action="ok" data-bind="style: {display: createPileProcessActive() == true || updatePileProcessActive() == true ? 'block' : 'none'}, click: okActiveProcess">
+					<p>OK</p>
 				</div>
 				<div class="clear"></div>
 			</div>

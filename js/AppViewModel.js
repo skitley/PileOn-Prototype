@@ -19,6 +19,10 @@ function AppViewModel() {
 	self.activeCategory = ko.observable(0);
 	self.activePile = ko.observable(0);
 	
+	// New and update pile process flags
+	self.createPileProcessActive = ko.observable(false);
+	self.updatePileProcessActive = ko.observable(false);
+	
 	// Holds all the view data
 	self.categories = ko.observableArray([]);
 	
@@ -54,10 +58,47 @@ function AppViewModel() {
 			}
 			
 		}
-		// Going to page 4 (map page)
-		else if (currentPage() ==3) {
+		// Going to page 4 (map page? cut this out?)
+		else if (currentPage() == 3) {
 		
 		}
+		
+	}
+	
+	
+	self.activateCreatePileProcess = function() {
+		createPileProcessActive(true);
+	}
+	
+	self.updatePile = function() {
+		// Update pile from home page vs details page respectively
+		updatePileProcessActive(true);
+	}
+	
+	self.cancelActiveProcess = function() {
+		createPileProcessActive(false);
+		updatePileProcessActive(false);
+	}
+	
+	self.okActiveProcess = function() {
+		if (createPileProcessActive() == true) {
+			alert("New pile being created... (coming soon)");
+			createPileProcessActive(false);
+			
+			// Set appropriate category
+			// Create new pile
+			// Set current page to new pile details (page 3)
+			
+		}
+		else if (updatePileProcessActive() == true) {
+			// Do checks to see which page user came from to autofill pile ID
+						
+			alert("Updating pile status. Your community thanks you!");
+			updatePileProcessActive(false);
+		}
+	}
+	
+	self.createPile = function() {
 		
 	}
 	

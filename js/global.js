@@ -33,6 +33,8 @@ function windowResize() {
 	appViewModel.viewportWidth($$('body').width());
 	appViewModel.viewportHeight(winHeight);
 	
+	
+	
 }
 
 /*** DEBUG ***/
