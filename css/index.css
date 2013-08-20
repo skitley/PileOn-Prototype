@@ -242,7 +242,7 @@ li {
 	margin:1em 0 0 0;
 }
 .location {
-	margin:0 0 0.2em 0;
+	margin:0 1em 0.2em 0;
 	padding:0.4em;
 	background:#FFF;
 }
@@ -289,15 +289,14 @@ li {
 
 
 #pile {
-	margin:1em 0 0 0;
+	margin:0;
 }
 #pile h1 {
 	margin:0.4em;
-	color:#AAA;
 	font-size:1.5em;
 }
 .info {
-	margin:0 0 0.2em 0;
+	margin:0 1em 0.2em 0;
 	padding:0.4em;
 	background:#FFF;
 }
@@ -342,19 +341,18 @@ li {
 	font-size:0.8em;
 }
 #pile .description {
-	margin:0.8em;
+	padding:0 2em 1em 1em;
 }
 #pile .description h1 {
 	margin:0;
 	color:#131313;
-	font-size:1em;
 }
 
 #history {
-
+	padding:0 2em 0em 1em;
 }
 .entry {
-	margin:0.4em 0.8em;
+	margin:0 0 0.5em 0;
 	padding:0.8em;
 	border:2px solid #AAA;
 	border-radius:1em;

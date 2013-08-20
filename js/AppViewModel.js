@@ -40,18 +40,24 @@ function AppViewModel() {
 		}
 		// Going to page 3 (pile details page)
 		else if (currentPage() == 2) {
+			activePile = $$(event.currentTarget).attr('data-pile');
+			
+			// clear any previously existing active pile
+			for (var j=0; j<categories().length; j++) {
+				for (var k=0; k<categories()[j].piles().length; k++) {
+					categories()[j].piles()[k].active(false);
+					
+					if (categories()[j].piles()[k].id() == activePile) {
+						categories()[j].piles()[k].active(true);;
+					}
+				}
+			}
 			
 		}
 		// Going to page 4 (map page)
 		else if (currentPage() ==3) {
 		
 		}
-		
-		setPageHeight();
-	}
-	
-	// Set the page height everytime a page change occurs
-	self.setPageHeight = function() {
 		
 	}
 	

@@ -48,7 +48,7 @@
 		<!-- height needs to = the current page height... -->
 		<div id="pageWrapInner" data-bind="style: {width: (viewportWidth()*pageCount())+'px', left: (0 + (-currentPage() * viewportWidth()))+'px'}">
 			<!-- PAGE1 -->
-			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}, css: {'page-active': currentPage() == 0}">
+			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
 				<div id="categories" data-bind="foreach: categories">
 					<div class="category" data-category="" data-bind="attr: {'data-category': id}, click: nextPage ">
 						<img src="http://placehold.it/50x50" alt="icon placeholder" />
@@ -130,7 +130,7 @@
 			</div>
 		
 			<!-- PAGE2 -->
-			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}, css: {'page-active': currentPage() == 1}">
+			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
 				<!-- ko foreach: categories -->
 				<!-- ko if: active -->
 				<h1 data-bind="text: name"></h1>
@@ -151,7 +151,7 @@
 						<address>123 Main Street, Minneapolis, MN 55414</address>
 						<hr />
 						<div class="actions">
-							<a href="pile.html">Details <span class="icon-circle-arrow-right"></span></a>
+							<a href="#nogo" data-bind="click: nextPage, attr: {'data-pile': id}">Details <span class="icon-circle-arrow-right"></span></a>
 						</div>
 					</div>
 					<div class="clear"></div>
@@ -162,12 +162,61 @@
 			</div>
 			
 			<!-- PAGE3 -->
-			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}, css: {'page-active': currentPage() == 2}">
-				<h1>Page 3</h1>
+			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
+				<div id="pile">
+					<!-- ko foreach: categories -->
+					<!-- ko if: active -->
+					<!-- ko foreach: piles -->
+					<!-- ko if: active -->
+					<h1><span data-bind="text: category"></span> Pile #<span data-bind="text: id"></span></h1>
+					<div class="info">
+						<div class="profile">
+							<div class="id">ID #<span data-bind="text: id"></span></div>
+							<hr />
+							<img src="http://placehold.it/256x256" alt="map image" />
+						</div>
+						<div class="details">
+							<div class="spacer"></div>
+							<div class="value">17.4</div>
+							<div class="units">miles away</div>
+							<hr />
+							<div class="status">5+ : 2h</div>
+							<hr />
+							<address>123 Main Street, Minneapolis, MN 55414</address>
+							<hr />
+							<div class="actions">
+								
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="description">
+						<h3>Notes</h3>
+						<p>Go in the park towards the right most trail and walk until you see the sign. Bring your own shovel!</p>
+					</div>
+					<div id="history">
+						<div class="entry">
+							<h1>2 Hours Ago</h1>
+							<img src="http://placehold.it/100x100" alt="pile status image" />
+						</div>
+						<div class="entry">
+							<h1>5 Hours Ago</h1>
+							<img src="http://placehold.it/100x100" alt="pile status image" />
+						</div>
+						<div class="entry">
+							<h1>1 Day Ago</h1>
+							<img src="http://placehold.it/100x100" alt="pile status image" />
+						</div>
+					</div>
+					<!-- /ko -->
+					<!-- /ko -->
+					<!-- /ko -->
+					<!-- /ko -->
+				</div>
 			</div>
 			
 			<!-- PAGE4 -->
-			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}, css: {'page-active': currentPage() == 3}">
+			<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
 				<h1>Page 4</h1>
 			</div>
 			
