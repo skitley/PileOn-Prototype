@@ -9,10 +9,9 @@ If you're interested in contributing, visit the [google group thread](https://gr
 
 Prototype Usage
 ----------------
-1. Clone the repo
-2. Open the local directory
-3. Open index.html in Chrome (prototype is not necessarily browser compatible)
+Visit this URL to demo the prototype:
+[http://skitley.github.io/PileOn-Prototype](http://skitley.github.io/PileOn-Prototype)
 
-(github pages of this app coming soon...)
+IMPORTANT: Use Chrome or Firefox. Safari may work too.
 
 If you have comments, ideas, suggestions, and the like, please get in touch!
