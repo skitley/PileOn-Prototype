@@ -30,11 +30,20 @@ function windowResize() {
 	// Send these to appViewModel for bindables if used...?
 	appViewModel.winWidth(winWidth);
 	appViewModel.winHeight(winHeight);
-	appViewModel.viewportWidth($$('body').width());
+	appViewModel.viewportWidth(byTag('body')[0].clientWidth);
 	appViewModel.viewportHeight(winHeight);
 	
 	
 	
+}
+
+/*** SELECTORS ***/
+function byID(str) {
+	return document.getElementById(str);
+}
+
+function byTag(str) {
+	return document.getElementsByTagName(str);
 }
 
 /*** DEBUG ***/

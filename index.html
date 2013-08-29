@@ -13,7 +13,7 @@
 		<link href="fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css">
 		
 		<script type="text/javascript" src="js/libs/modernizr.js"></script>
-		<script type="text/javascript" src="js/libs/quo.js"></script>
+		<!--<script type="text/javascript" src="js/libs/quo.js"></script>-->
 		<script type="text/javascript" src="js/libs/ko.js"></script>
 		<script type="text/javascript" src="js/AppViewModel.js"></script>
 		<script type="text/javascript" src="js/AppViewController.js"></script>
@@ -29,7 +29,7 @@
 				<p>Search</p>
 			</div>
 			<div class="logo">
-				<h1><a href="index.html">PileOn <span style="font-size:0.5em;font-weight:400;">(prototype)</span></a></h1>
+				<h1><a href="#nogo" data-bind="click: firstPage">PileOn <span style="font-size:0.5em;font-weight:400;">(prototype)</span></a></h1>
 				<p>Free piles of materials near you!</p>
 			</div>
 			<div class="clear"></div>
@@ -44,7 +44,7 @@
 			<div class="clear"></div>
 		</div>
 		
-		<div id="pageWrap" data-bind="style: {width: viewportWidth()+'px', height: (viewportHeight()-100)+'px'}">
+		<div id="pageWrap" data-bind="style: {width: viewportWidth()+'px', height: (viewportHeight()-118)+'px'}">
 			<div id="pageWrapInner" data-bind="style: {width: (viewportWidth()*pageCount())+'px', left: (0 + (-currentPage() * viewportWidth()))+'px'}">
 				<!-- PAGE1 -->
 				<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
@@ -71,22 +71,30 @@
 						<p>If you're interested in contributing, visit the <a href="https://github.com/skitley/PileOn-Prototype">PileOn github page</a>, or visit the <a href="https://groups.google.com/forum/#!topic/twin-cities-brigade/obapXOdsuAs">google group thread</a> discussing this app.</p>
 					</div>
 					
-					<div id="comingsoon">
-						<h3>Coming Soon</h3>
-						<ul>
-							<li>Better vertical scrolling!</li>
-							<li>Real working forms!</li>
-							<li>Lists AND maps!</li>
-							<li>Location entering and GPS!</li>
-							<li>More realistic data!</li>
-							<li>A kick-ass visual design!</li>
-							<li>A prototype that's published to the world!</li>
-							<li>Custom, printable signs for you to print out and use for your pile!</li>
-						</ul>
-					</div>
-					
 					<div id="updates">
 						<h3>PileOn Updates</h3>
+						<div class="update">
+							<p class="date">August 29th, 2013</p>
+							<ul>
+								<li>Cleaned up form layouts</li>
+								<li>Added hooks/alerts for all remaining actions</li>
+								<li>Removed coming soon section</li>
+							</ul>
+						</div>
+						<div class="update">
+							<p class="date">August 28th, 2013</p>
+							<ul>
+								<li>More realistic data and update pile details page</li>
+								<li>Added back button, consolidated gps and location button</li>
+							</ul>
+						</div>
+						<div class="update">
+							<p class="date">August 27th, 2013</p>
+							<ul>
+								<li>Published prototype on github pages: <a href="http://skitley.github.io/PileOn-Prototype">http://skitley.github.io/PileOn-Prototype</a></li>
+								<li>Data within the app is more realistic and believable</li>
+							</ul>
+						</div>
 						<div class="update">
 							<p class="date">August 20th, 2013</p>
 							<ul>
@@ -142,9 +150,9 @@
 					<h1 data-bind="text: name"></h1>
 					<div id="location">
 						<div class="header">
-							<div class="col id">ID</div>
+							<!--<div class="col id">ID</div>-->
 							<div class="col amount">Amt</div>
-							<div class="col update">Stat</div>
+							<div class="col update">Reported</div>
 							<div class="col distance">Miles</div>
 							<div class="col address">Addy</div>
 							<div class="col"></div>
@@ -152,11 +160,28 @@
 						</div>
 						<!-- ko foreach: piles -->
 						<div class="row" data-bind="click: nextPage, attr: {'data-pile': id}">
-							<div class="col id" data-bind="text: id"></div>
-							<div class="col amount">5+</div>
-							<div class="col update">2h</div>
-							<div class="col distance">17.4</div>
-							<div class="col address">123 Main Street, Minneapolis MN, 55414</div>
+							<!--<div class="col id" data-bind="text: id"></div>-->
+							<!-- ko if: amount() == 1 -->
+							<div class="col amount">Little</div>
+							<!-- /ko -->
+							<!-- ko if: amount() == 2 -->
+							<div class="col amount">Some</div>
+							<!-- /ko -->
+							<!-- ko if: amount() == 3 -->
+							<div class="col amount">Enough</div>
+							<!-- /ko -->
+							<!-- ko if: amount() == 4 -->
+							<div class="col amount">Plenty</div>
+							<!-- /ko -->
+							<!-- ko if: amount() == 5 -->
+							<div class="col amount">Lots</div>
+							<!-- /ko -->
+							<!-- ko if: amount() == 6 -->
+							<div class="col amount">Tons</div>
+							<!-- /ko -->
+							<div class="col update"><span data-bind="text: firstTimeStamp"></span>h</div>
+							<div class="col distance"><span data-bind="text: distance"></span>.0</div>
+							<div class="col address">An address <span data-bind="text: distance"></span> miles away</div>
 							<div class="col arrow"><div class="icon-circle-arrow-right"></div></div>
 							<div class="clear"></div>
 						</div>
@@ -182,12 +207,31 @@
 							</div>
 							<div class="details">
 								<div class="spacer"></div>
-								<div class="value">17.4</div>
+								<div class="value"><span data-bind="text: distance"></span>.0</div>
 								<div class="units">miles away</div>
 								<hr />
-								<div class="status">5+ : 2h</div>
+								<div class="status">
+									<!-- ko if: amount() == 1 -->
+									<div><strong>Little</strong> material is left as of <strong><span data-bind="text: firstTimeStamp"></span> hours</strong> ago.</div>
+									<!-- /ko -->
+									<!-- ko if: amount() == 2 -->
+									<div><strong>Some</strong> material is left as of <strong><span data-bind="text: firstTimeStamp"></span> hours</strong> ago.</div>
+									<!-- /ko -->
+									<!-- ko if: amount() == 3 -->
+									<div><strong>Enough</strong> material is left as of <strong><span data-bind="text: firstTimeStamp"></span> hours</strong> ago.</div>
+									<!-- /ko -->
+									<!-- ko if: amount() == 4 -->
+									<div><strong>Plenty</strong> of material is left as of <strong><span data-bind="text: firstTimeStamp"></span> hours</strong> ago.</div>
+									<!-- /ko -->
+									<!-- ko if: amount() == 5 -->
+									<div><strong>Lots</strong> of material is left as of <strong><span data-bind="text: firstTimeStamp"></span> hours</strong> ago.</div>
+									<!-- /ko -->
+									<!-- ko if: amount() == 6 -->
+									<div><strong>Tons</strong> of material is left as of <strong><span data-bind="text: firstTimeStamp"></span> hours</strong> ago.</div>
+									<!-- /ko -->
+								</div>
 								<hr />
-								<address>123 Main Street, Minneapolis, MN 55414</address>
+								<address>An address that is <span data-bind="text: distance"></span>.0 miles away.</address>
 								<hr />
 								<div class="actions">
 									
@@ -201,16 +245,36 @@
 						</div>
 						<div id="history">
 							<div class="entry">
-								<h1>2 Hours Ago</h1>
-								<img src="http://placehold.it/100x100" alt="pile status image" />
+								<h1><span data-bind="text: firstTimeStamp"></span>.0 Hours Ago</h1>
+								<!-- ko if: amount() == 0 -->
+								<div class="amount">None</div>
+								<!-- /ko -->
+								<!-- ko if: amount() == 1 -->
+								<div class="amount">Little</div>
+								<!-- /ko -->
+								<!-- ko if: amount() == 2 -->
+								<div class="amount">Some</div>
+								<!-- /ko -->
+								<!-- ko if: amount() == 3 -->
+								<div class="amount">Enough</div>
+								<!-- /ko -->
+								<!-- ko if: amount() == 4 -->
+								<div class="amount">Plenty</div>
+								<!-- /ko -->
+								<!-- ko if: amount() == 5 -->
+								<div class="amount">Lots</div>
+								<!-- /ko -->
+								<!-- ko if: amount() == 6 -->
+								<div class="amount">Tons</div>
+								<!-- /ko -->
 							</div>
 							<div class="entry">
-								<h1>5 Hours Ago</h1>
-								<img src="http://placehold.it/100x100" alt="pile status image" />
+								<h1>XY Hours Ago</h1>
+								<div class="amount">Tons</div>
 							</div>
 							<div class="entry">
-								<h1>1 Day Ago</h1>
-								<img src="http://placehold.it/100x100" alt="pile status image" />
+								<h1>Z Day(s) Ago</h1>
+								<div class="amount">Tons</div>
 							</div>
 						</div>
 						<!-- /ko -->
@@ -230,106 +294,106 @@
 			</div>
 		</div>
 		
-		<div id="newPileForm" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-40)+'px', left: createPileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
+		<div id="newPileForm" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-62)+'px', left: createPileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
 			<div class="inner">
-				<div id="address">
-					<h1>What is the location of the pile?</h1>
-					<div class="action">From GPS</div>
-					<br /><br />
-					<h6>Manual Entry</h6>
-					<input type="text" value="address 1">
-					<input type="text" value="address 2">
-					<input type="text" value="city">
-					<input type="text" value="state">
-					<input type="text" value="zip">
+				<div class="header">
+					<h1>New Pile</h1>
 				</div>
 				
-				<div id="types">
+				<div class="address">
+					<h1>What is the location of the pile?</h1>
+					<div>
+						<div class="manual">
+							<input type="text" value="address 1">
+							<input type="text" value="address 2">
+							<input type="text" value="city">
+							<input type="text" value="state">
+							<input type="text" value="zip">
+						</div>
+						<div class="auto">
+							<div class="action" data-bind="click: getLocationFromGPS">From GPS</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				
+				<div class="types">
 					<h1>What type of material do you have?</h1>
-					<div class="type" data-type="dirt">Dirt</div>
-					<div class="type" data-type="woodchips">Woodchips</div>
-					<div class="type" data-type="sticks">Sticks</div>
-					<div class="type" data-type="leaves">Leaves</div>
-					<div class="type" data-type="pineneedles">Pine Needles</div>
-					<div class="type" data-type="rocks">Rocks</div>
-					<div class="type" data-type="pebbles">Pebbles</div>
+					<div class="type" data-type="dirt" data-bind="click: newPileMaterialSelect">Dirt</div>
+					<div class="type" data-type="woodchips" data-bind="click: newPileMaterialSelect">Woodchips</div>
+					<div class="type" data-type="sticks" data-bind="click: newPileMaterialSelect">Sticks</div>
+					<div class="type" data-type="leaves" data-bind="click: newPileMaterialSelect">Leaves</div>
+					<div class="type" data-type="pineneedles" data-bind="click: newPileMaterialSelect">Pine Needles</div>
+					<div class="type" data-type="hay" data-bind="click: newPileMaterialSelect">Hay</div>
+					<div class="type" data-type="rocks" data-bind="click: newPileMaterialSelect">Rocks</div>
+					<div class="type" data-type="pebbles" data-bind="click: newPileMaterialSelect">Pebbles</div>
 					<div class="clear"></div>
 				</div>
 				
-				<div id="amount">
+				<div class="amount">
 					<h1>How much material do you have?</h1>
-					<div class="option" data-option="tons">
-						<img src="http://placehold.it/140x50" alt="tons image" />
+					<div class="option" data-option="tons" data-bind="click: newPileMaterialAmountSelect">
 						<p>Tons</p>
-						<div class="clear"></div>
 					</div>
-					<div class="option" data-option="lots">
-						<img src="http://placehold.it/140x50" alt="lots image" />
+					<div class="option" data-option="lots" data-bind="click: newPileMaterialAmountSelect">
 						<p>Lots</p>
-						<div class="clear"></div>
 					</div>
-					<div class="option" data-option="good">
-						<img src="http://placehold.it/140x50" alt="good image" />
+					<div class="option" data-option="good" data-bind="click: newPileMaterialAmountSelect">
 						<p>Plenty</p>
-						<div class="clear"></div>
 					</div>
-					<div class="option" data-option="enough">
-						<img src="http://placehold.it/140x50" alt="enough image" />
+					<div class="option" data-option="enough" data-bind="click: newPileMaterialAmountSelect">
 						<p>Enough</p>
-						<div class="clear"></div>
 					</div>
-					<div class="option" data-option="some">
-						<img src="http://placehold.it/140x50" alt="some image" />
+					<div class="option" data-option="some" data-bind="click: newPileMaterialAmountSelect">
 						<p>Some</p>
-						<div class="clear"></div>
 					</div>
-					<div class="option" data-option="little">
-						<img src="http://placehold.it/140x50" alt="little image" />
+					<div class="option" data-option="little" data-bind="click: newPileMaterialAmountSelect">
 						<p>Little</p>
-						<div class="clear"></div>
 					</div>
+					<div class="clear"></div>
 				</div>
 			
-				<div id="description">
+				<div class="description">
 					<h1>Notes (optional)</h1>
 					<textarea></textarea>
-					<p>(140 max character)</p>
+					<p style="font-size:0.8em;">(250 max character)</p>
 				</div>
 			</div>
 		</div>
 		
-		<div id="updatePileForm" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-40)+'px', left: updatePileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
+		<div id="updatePileForm" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-62)+'px', left: updatePileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
 			<div class="inner">
-				<h1>Pile ID#</h1>
-				<div><input type="text" /></div>
-				<h1>How many woodchips are left?</h1>
-				<div class="option" data-option="tons">
-					<p>Tons</p>
-					<img src="http://placehold.it/280x100" alt="tons image" />
+				<div class="header">
+					<h1>Update Pile</h1>
 				</div>
-				<div class="option" data-option="lots">
-					<p>Lots</p>
-					<img src="http://placehold.it/280x100" alt="lots image" />
+				<div class="id">
+					<h1>Pile ID#</h1>
+					<div><input type="text" /></div>
 				</div>
-				<div class="option" data-option="good">
-					<p>Plenty</p>
-					<img src="http://placehold.it/280x100" alt="good image" />
-				</div>
-				<div class="option" data-option="enough">
-					<p>Enough</p>
-					<img src="http://placehold.it/280x100" alt="enough image" />
-				</div>
-				<div class="option" data-option="some">
-					<p>Some</p>
-					<img src="http://placehold.it/280x100" alt="some image" />
-				</div>
-				<div class="option" data-option="little">
-					<p>Little</p>
-					<img src="http://placehold.it/280x100" alt="little image" />
-				</div>
-				<div class="option" data-option="none">
-					<p>None</p>
-					<img src="http://placehold.it/280x100" alt="none image" />
+				<div class="amount">
+					<h1>How many woodchips are left?</h1>
+					<div class="option" data-option="tons" data-bind="click: updatePileMaterialAmountSelect">
+						<p>Tons</p>
+					</div>
+					<div class="option" data-option="lots" data-bind="click: updatePileMaterialAmountSelect">
+						<p>Lots</p>
+					</div>
+					<div class="option" data-option="good" data-bind="click: updatePileMaterialAmountSelect">
+						<p>Plenty</p>
+					</div>
+					<div class="option" data-option="enough" data-bind="click: updatePileMaterialAmountSelect">
+						<p>Enough</p>
+					</div>
+					<div class="option" data-option="some" data-bind="click: updatePileMaterialAmountSelect">
+						<p>Some</p>
+					</div>
+					<div class="option" data-option="little" data-bind="click: updatePileMaterialAmountSelect">
+						<p>Little</p>
+					</div>
+					<div class="option" data-option="none" data-bind="click: updatePileMaterialAmountSelect">
+						<p>None</p>
+					</div>
+					<div class="clear"></div>
 				</div>
 			</div>
 		</div>
@@ -338,30 +402,39 @@
 		
 		<div id="actions" data-bind="style: {width: (viewportWidth())+'px'}">
 			<div class="inner">
+				<div id="action-back" class="action" data-action="back" data-bind="style: {display: (currentPage() == 1 || currentPage() == 2) && createPileProcessActive() == false && updatePileProcessActive() == false ? 'block' : 'none'}, click: prevPage">
+					<div class="icon-arrow-left icon-large"></div>
+					<p>Back</p>
+				</div>
 				<div class="action" data-action="new" data-bind="style: {display: currentPage() == 0 && createPileProcessActive() == false && updatePileProcessActive() == false ? 'block' : 'none'}, click:  activateCreatePileProcess">
+					<div class="icon-plus icon-large"></div>
 					<p>New</p>
 				</div>
 				<div class="action" data-action="update" data-bind="style: {display: (currentPage() == 0 || currentPage() == 2) && createPileProcessActive() == false && updatePileProcessActive() == false ? 'block' : 'none'}, click: updatePile">
+					<div class="icon-refresh icon-large"></div>
 					<p>Update</p>
 				</div>
-				<div class="action" data-action="listview" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}">
+				<div class="action" data-action="listview" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}, css: {'action-disabled': listViewActive() == true }, click: changeViewMode">
+					<div class="icon-reorder icon-large"></div>
 					<p>List View</p>
 				</div>
-				<div class="action" data-action="mapview" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}">
+				<div class="action" data-action="mapview" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}, css: {'action-disabled': mapViewActive() == true }, click: changeViewMode">
+					<div class="icon-map-marker icon-large"></div>
 					<p>Map View</p>
 				</div>
-				<div class="action" data-action="yourlocation" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}">
-					<p>Your Location</p>
+				<div class="action" data-action="yourlocation" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}, click: locationForm">
+					<div class="icon-screenshot icon-large"></div>
+					<p>Location</p>
 				</div>
-				<div class="action" data-action="gps" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}">
-					<p>GPS</p>
-				</div>
-				<div class="action" data-action="cancel" data-bind="style: {display: createPileProcessActive() == true || updatePileProcessActive() == true ? 'block' : 'none'}, click: cancelActiveProcess">
-					<p>Cancel</p>
-				</div>
-				<div class="action" data-action="ok" data-bind="style: {display: createPileProcessActive() == true || updatePileProcessActive() == true ? 'block' : 'none'}, click: okActiveProcess">
+				<div id="action-ok" class="action" data-action="ok" data-bind="style: {display: createPileProcessActive() == true || updatePileProcessActive() == true ? 'block' : 'none'}, click: okActiveProcess">
+					<div class="icon-ok icon-large"></div>
 					<p>OK</p>
 				</div>
+				<div class="action" data-action="cancel" data-bind="style: {display: createPileProcessActive() == true || updatePileProcessActive() == true ? 'block' : 'none'}, click: cancelActiveProcess">
+					<div class="icon-remove icon-large"></div>
+					<p>Cancel</p>
+				</div>
+				
 				<div class="clear"></div>
 			</div>
 		</div>

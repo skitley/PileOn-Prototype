@@ -15,7 +15,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	margin:0 0 0.3em 0;
 	color:#131313;
-	font-weight:700;
+	font-weight:800;
 }
 h1 {
 	font-size:3em;
@@ -49,6 +49,9 @@ a:hover {
 li {
 	margin:0 0 0.4em 1.4em;
 	list-style-type:disc;
+}
+strong {
+	font-weight:800;
 }
 
 /* */
@@ -196,6 +199,7 @@ li {
 	color:#DDD;
 	float:left;
 	text-align:center;
+	position:relative;
 }
 .action:hover {
 	background:#0072BC;
@@ -204,6 +208,9 @@ li {
 }
 .action p {
 	font-size:0.8em;
+}
+.action-icon {
+	color:#424242;
 }
 .action-ok {
 	padding:0.8em;
@@ -214,6 +221,16 @@ li {
 	padding:0.8em;
 	border-radius:0.2em;
 	float:left;
+}
+#action-ok,
+#action-back {
+	float:right;
+}
+.action-disabled,
+.action-disabled:hover {
+	background:#212121;
+	color:#636363;
+	cursor:default;
 }
 
 #updates {
@@ -260,15 +277,15 @@ li {
 	text-align:center;
 }
 #location .header .amount {
-	width:10%;
+	width:20%;
 	text-align:center;
 }
 #location .header .update {
-	width:10%;
+	width:15%;
 	text-align:center;
 }
 #location .header .address {
-	width:40%;
+	width:30%;
 }
 #location .header .distance {
 	width: 15%;
@@ -278,6 +295,7 @@ li {
 	margin:0 0 0.2em 0;
 	padding:0.8em;
 	background:#FFF;
+	line-height:1.4em;
 }
 #location .row:hover {
 	background:#0072BC;
@@ -297,17 +315,17 @@ li {
 	text-align:center;
 }
 #location .row .amount {
-	width:10%;
+	width:20%;
 	font-weight:bold;
 	text-align:center;
 }
 #location .row .update {
-	width:10%;
+	width:15%;
 	font-weight:bold;
 	text-align:center;
 }
 #location .row .address {
-	width:40%;
+	width:30%;
 }
 #location .row .distance {
 	width: 15%;
@@ -372,7 +390,8 @@ li {
 	font-size:0.8em;
 }
 #pile .description {
-	padding:0 2em 1em 1em;
+	padding:1em 2em 1em 1em;
+	background:#FFF;
 }
 #pile .description h1 {
 	margin:0;
@@ -380,7 +399,7 @@ li {
 }
 
 #history {
-	padding:0 2em 0em 1em;
+	padding:1em 2em 0em 1em;
 }
 .entry {
 	margin:0 0 0.5em 0;
@@ -390,6 +409,11 @@ li {
 }
 .entry h1 {
 	font-size:0.9em;
+}
+.entry .amount {
+	width:6.25em;
+	height:6.25em;
+	background:#DDD;
 }
 
 
@@ -408,7 +432,78 @@ li {
 	margin:1em 2em 1em 1em;
 }
 #newPileForm h1 {
-	font-size:1.5em;
+	font-size:1em;
+}
+#newPileForm .header {
+	width:100%;
+	background:#212121;
+	color:#FFF;
+	position:absolute;
+	top:0;
+	left:0;
+}
+#newPileForm .header h1 {
+	padding:0.2em 0.65em 0.1em 0.65em;
+	color:#FFF;
+}
+#newPileForm .address {
+	margin:3em 0 1em 0;
+}
+#newPileForm .address input {
+	display:block;
+}
+#newPileForm .address .action {
+	width:100%;
+	float:none;
+}
+#newPileForm .address .manual {
+	width:48%;
+	margin:0 2% 0 0;
+	padding:0 2% 0 0;
+	border-right:1px solid #CCC;
+	float:left;
+}
+#newPileForm .address .auto {
+	width:47%;
+	float:left;
+}
+#newPileForm .types {
+	margin:0 0 1em 0;
+}
+#newPileForm .type {
+	width:6.25em;
+	height:6.25em;
+	margin:0.2em;
+	background:#DDD;
+	float:left;
+	font-size:0.9em;
+}
+#newPileForm .type:hover {
+	background:#0072BC;
+	color:#FFF;
+	cursor:pointer;
+}
+
+#newPileForm .amount {
+	margin:0 0 1em 0;
+}
+#newPileForm .amount .option {
+	width:6.25em;
+	height:6.25em;
+	margin:0.2em;
+	background:#DDD;
+	float:left;
+	font-size:0.9em;
+}
+#newPileForm .amount .option:hover {
+	background:#0072BC;
+	color:#FFF;
+	cursor:pointer;
+}
+#newPileForm .types .action-selected,
+#newPileForm .amount .action-selected {
+	background:#0072BC;
+	color:#FFF;
 }
 
 #updatePileForm {
@@ -425,8 +520,40 @@ li {
 #updatePileForm .inner {
 	margin:1em 2em 1em 1em;
 }
+#updatePileForm .header {
+	width:100%;
+	background:#212121;
+	color:#FFF;
+	position:absolute;
+	top:0;
+	left:0;
+}
+#updatePileForm .header h1 {
+	padding:0.2em 0.65em 0.1em 0.65em;
+	color:#FFF;
+}
 #updatePileForm h1 {
-	font-size:1.5em;
+	font-size:1em;
+}
+#updatePileForm .id {
+	margin:3em 0 1em 0;
+}
+#updatePileForm .amount .option {
+	width:6.25em;
+	height:6.25em;
+	margin:0.2em;
+	background:#DDD;
+	float:left;
+	font-size:0.9em;
+}
+#updatePileForm .amount .option:hover {
+	background:#0072BC;
+	color:#FFF;
+	cursor:pointer;
+}
+#updatePileForm .amount .action-selected {
+	background:#0072BC;
+	color:#FFF;
 }
 
 #overlays {
@@ -477,6 +604,25 @@ li {
 	display:block;
 	clear:both;
 }
+
+/*** RESPONSIVENESS ***/
+@media (min-width:600px) {
+	#newPileForm .address input {
+		width:15em;
+	}
+}
+@media (max-width:520px) {
+	#newPileForm .address input {
+		width:10.75em;
+	}
+}
+@media (max-width:400px) {
+	#newPileForm .address input {
+		width:7.5em;
+	}
+}
+
+
 
 /** PROTOTYPE DISCLAIMER & INFO **/
 #protoinfo {
