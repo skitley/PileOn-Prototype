@@ -3,7 +3,7 @@ var appViewModel = AppViewModel();
 var appViewController = new AppViewController();
 
 document.onreadystatechange = function() {
-	if (document.readyState == 'interactive') {
+	if (document.readyState == 'complete') {
 		init();
 	}
 }
