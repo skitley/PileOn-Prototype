@@ -26,14 +26,10 @@ function AppViewController() {
 	
 	self.getCategories = function() {
 		var categories = [
-			new CategoryViewModel(0, "Dirt"),
-			new CategoryViewModel(1, "Woodchips"),
-			new CategoryViewModel(2, "Sticks"),
-			new CategoryViewModel(3, "Leaves"),
-			new CategoryViewModel(4, "Pine Needles"),
-			new CategoryViewModel(5, "Hay"),
-			new CategoryViewModel(6, "Rocks"),
-			new CategoryViewModel(7, "Pebbles")
+			new CategoryViewModel(0, "Leaves"),
+			new CategoryViewModel(1, "Pine Needles"),
+			new CategoryViewModel(2, "Rocks"),
+			new CategoryViewModel(3, "Woodchips")
 		];
 		
 		appViewModel.categories(categories);
@@ -41,78 +37,45 @@ function AppViewController() {
 	}
 
 	self.getCategoryNumPiles = function() {
-		var dirtPiles = [
-			new PileViewModel(1,"Dirt",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(2,"Dirt",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(3,"Dirt",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(4,"Dirt",randNum(1,7),randNum(1,24),randNum(0,50))
-		];
-		appViewModel.categories()[0].piles(dirtPiles);
-		appViewModel.categories()[0].numPiles(dirtPiles.length);
-		
-		var woodchipPiles = [
-			new PileViewModel(5,"Woodchip",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(6,"Woodchip",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(7,"Woodchip",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(8,"Woodchip",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(9,"Woodchip",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(10,"Woodchip",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(11,"Woodchip",randNum(1,7),randNum(1,24),randNum(0,50))
-		];
-		appViewModel.categories()[1].piles(woodchipPiles);
-		appViewModel.categories()[1].numPiles(woodchipPiles.length);
-		
-		var stickPiles = [
-			new PileViewModel(12,"Stick",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(13,"Stick",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(14,"Stick",randNum(1,7),randNum(1,24),randNum(0,50))
-		];
-		appViewModel.categories()[2].piles(stickPiles);
-		appViewModel.categories()[2].numPiles(stickPiles.length);
-		
 		var leafPiles = [
-			new PileViewModel(15,"Leaves",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(16,"Leaves",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(17,"Leaves",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(18,"Leaves",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(19,"Leaves",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(20,"Leaves",randNum(1,7),randNum(1,24),randNum(0,50))
+			new PileViewModel(1,"Leaves",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(2,"Leaves",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(3,"Leaves",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(4,"Leaves",randNum(1,7),randNum(1,24),randNum(0,50))
 		];
-		appViewModel.categories()[3].piles(leafPiles);
-		appViewModel.categories()[3].numPiles(leafPiles.length);
+		appViewModel.categories()[0].piles(leafPiles);
+		appViewModel.categories()[0].numPiles(leafPiles.length);
 		
-		var pinePiles = [
-			new PileViewModel(21,"Pine Needles",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(22,"Pine Needles",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(23,"Pine Needles",randNum(1,7),randNum(1,24),randNum(0,50))
+		var pineneedlesPiles = [
+			new PileViewModel(5,"Pine Needles",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(6,"Pine Needles",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(7,"Pine Needles",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(8,"Pine Needles",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(9,"Pine Needles",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(10,"Pine Needles",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(11,"Pine Needles",randNum(1,7),randNum(1,24),randNum(0,50))
 		];
-		appViewModel.categories()[4].piles(pinePiles);
-		appViewModel.categories()[4].numPiles(pinePiles.length);
-		
-		var hayPiles = [
-			new PileViewModel(24,"Hay",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(25,"Hay",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(26,"Hay",randNum(1,7),randNum(1,24),randNum(0,50))
-		];
-		appViewModel.categories()[5].piles(hayPiles);
-		appViewModel.categories()[5].numPiles(hayPiles.length);
+		appViewModel.categories()[1].piles(pineneedlesPiles);
+		appViewModel.categories()[1].numPiles(pineneedlesPiles.length);
 		
 		var rockPiles = [
-			new PileViewModel(27,"Rocks",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(28,"Rocks",randNum(1,7),randNum(1,24),randNum(0,50))
+			new PileViewModel(12,"Rocks",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(13,"Rocks",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(14,"Rocks",randNum(1,7),randNum(1,24),randNum(0,50))
 		];
-		appViewModel.categories()[6].piles(rockPiles);
-		appViewModel.categories()[6].numPiles(rockPiles.length);
+		appViewModel.categories()[2].piles(rockPiles);
+		appViewModel.categories()[2].numPiles(rockPiles.length);
 		
-		var pebblePiles = [
-			new PileViewModel(29,"Pebbles",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(30,"Pebbles",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(31,"Pebbles",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(32,"Pebbles",randNum(1,7),randNum(1,24),randNum(0,50)),
-			new PileViewModel(33,"Pebbles",randNum(1,7),randNum(1,24),randNum(0,50))
+		var woodchipPiles = [
+			new PileViewModel(15,"Woodchips",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(16,"Woodchips",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(17,"Woodchips",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(18,"Woodchips",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(19,"Woodchips",randNum(1,7),randNum(1,24),randNum(0,50)),
+			new PileViewModel(20,"Woodchips",randNum(1,7),randNum(1,24),randNum(0,50))
 		];
-		appViewModel.categories()[7].piles(pebblePiles);
-		appViewModel.categories()[7].numPiles(pebblePiles.length);
+		appViewModel.categories()[3].piles(woodchipPiles);
+		appViewModel.categories()[3].numPiles(woodchipPiles.length);
 		
 	}
 	

@@ -27,9 +27,13 @@ function AppViewModel() {
 	self.listViewActive = ko.observable(true);
 	self.mapViewActive = ko.observable(false);
 	
-	// Tracks selection button states
+	// Tracks selection button states and which amount of material is selected
 	self.isMaterialSelected = ko.observable(false);
 	self.isMaterialAmountSelected = ko.observable(false);
+	self.materialAmount = ko.observable(0);
+	
+	// Toggles the state of the about page
+	self.isShowingAboutPage = ko.observable(false);
 	
 	// Holds all the view data
 	self.categories = ko.observableArray([]);
@@ -43,16 +47,17 @@ function AppViewModel() {
 		properties.
 	*/
 	self.nextPage = function(data, event) {
+		byID('pageWrap').scrollTop = 0;
 		currentPage(currentPage() + 1);
 		
 		// Going to page 2 (list of piles in category)
 		if (currentPage() == 1) {
-			activeCategory = (event.currentTarget).getAttribute('data-category');
+			activeCategory((event.currentTarget).getAttribute('data-category'));
 			
 			for (var i=0; i<categories().length; i++) {
 				categories()[i].active(false);
 			}
-			categories()[activeCategory].active(true);
+			categories()[activeCategory()].active(true);
 		}
 		// Going to page 3 (pile details page)
 		else if (currentPage() == 2) {
@@ -95,6 +100,12 @@ function AppViewModel() {
 			}
 		}
 		currentPage(currentPage() - 1);
+		
+		// WARNING: Messy code
+		// Force scroll on #pagewrap to top (otherwise might not see some stuff)
+		// TODO: Fix scrolling to be better...
+		byID('pageWrap').scrollTop = 0;
+		
 	}
 	
 	self.firstPage = function() {
@@ -142,11 +153,28 @@ function AppViewModel() {
 		updatePileProcessActive(true);
 	}
 	
+	// Messy code
 	self.cancelActiveProcess = function() {
 		createPileProcessActive(false);
 		updatePileProcessActive(false);
+		
+		// Reset material amount selection stuff
+		for (var i=0;i<byID('newPileForm').getElementsByClassName('type').length; i++) {
+			byID('newPileForm').getElementsByClassName('type')[i].classList.remove('action-selected');
+		}
+		for (var k=0;k<byID('newPileForm').getElementsByClassName('option').length; k++) {
+			byID('newPileForm').getElementsByClassName('option')[k].classList.remove('action-selected');
+		}
+		for (var j=0;j<byID('updatePileForm').getElementsByClassName('option').length; j++) {
+			byID('updatePileForm').getElementsByClassName('option')[j].classList.remove('action-selected');
+		}
+		materialAmount(0);
+		
+		byID('newPileForm').scrollTop = 0;
+		byID('updatePileForm').scrollTop = 0;
 	}
 	
+	// WARNING: Messy code
 	self.okActiveProcess = function() {
 		if (createPileProcessActive() == true) {
 			alert("New pile being created... (coming soon)");
@@ -163,9 +191,25 @@ function AppViewModel() {
 			alert("Updating pile status. Your community thanks you!");
 			updatePileProcessActive(false);
 		}
+		
+		// Reset material amount selection stuff
+		for (var i=0;i<byID('newPileForm').getElementsByClassName('type').length; i++) {
+			byID('newPileForm').getElementsByClassName('type')[i].classList.remove('action-selected');
+		}
+		for (var k=0;k<byID('newPileForm').getElementsByClassName('option').length; k++) {
+			byID('newPileForm').getElementsByClassName('option')[k].classList.remove('action-selected');
+		}
+		for (var j=0;j<byID('updatePileForm').getElementsByClassName('option').length; j++) {
+			byID('updatePileForm').getElementsByClassName('option')[j].classList.remove('action-selected');
+		}
+		materialAmount(0);
+		
+		byID('newPileForm').scrollTop = 0;
+		byID('updatePileForm').scrollTop = 0;
+		
 	}
 	
-	// Messy and would need appropriate view model for cleanup (forms in general need this)
+	// WARNING: Messy code (forms in general need this)
 	self.newPileMaterialSelect = function(data, event) {
 		for (var i=0;i<byID('newPileForm').getElementsByClassName('type').length; i++) {
 			byID('newPileForm').getElementsByClassName('type')[i].classList.remove('action-selected');
@@ -173,19 +217,28 @@ function AppViewModel() {
 		event.currentTarget.classList.add('action-selected');
 	}
 	
-	// Messy and would need appropriate view model for cleanup (forms in general need this)
+	// WARNING: Messy code (forms in general need this)
 	self.newPileMaterialAmountSelect = function(data, event) {
+		// Reset button selection displays and add selected class to target
 		for (var i=0;i<byID('newPileForm').getElementsByClassName('option').length; i++) {
 			byID('newPileForm').getElementsByClassName('option')[i].classList.remove('action-selected');
 		}
 		event.currentTarget.classList.add('action-selected');
+		
+		// Change the chart image appropriately
+		materialAmount(event.currentTarget.getAttribute('data-amount'));
 	}
 	
+	// WARNING: Messy code
 	self.updatePileMaterialAmountSelect = function(data, event) {
+		// Reset button selection displays and add selected class to target
 		for (var i=0;i<byID('updatePileForm').getElementsByClassName('option').length; i++) {
 			byID('updatePileForm').getElementsByClassName('option')[i].classList.remove('action-selected');
 		}
 		event.currentTarget.classList.add('action-selected');
+		
+		// Change the chart image appropriately
+		materialAmount(event.currentTarget.getAttribute('data-amount'));
 	}
 	
 	self.createPile = function() {
@@ -199,6 +252,22 @@ function AppViewModel() {
 	self.locationForm = function() {
 		alert('Location entry form coming soon.');
 	}
+	
+	self.toggleAbout = function() {
+		if (isShowingAboutPage() == false) {
+			isShowingAboutPage(true);
+		}
+		else {
+			isShowingAboutPage(false);
+		}
+	}
+	
+	self.pageWrapClass = ko.computed(function() {
+		if (currentPage() == 1 || currentPage() == 2) {
+			// find the active category and return appropriate
+			return activeCategory();
+		}
+	}, this);
 	
 	return self;
 };
