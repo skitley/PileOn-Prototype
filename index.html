@@ -25,14 +25,18 @@
 	<body>
 		<!-- ko if: currentPage() == 0 -->
 		<div class="topnav topnav-home">
-			<div class="logo" >
-				<h1><a href="#nogo" data-bind="click: firstPage">PileOn</a></h1>
-				<div style="font-size:1em;font-weight:400;color:#AAA;position:absolute;top:0;left:1.5em;">(prototype)</div>
-				<p>Free piles of materials near you!</p>
+			<div class="logowrap">
+				<div class="logoimg">
+					<a href="#nogo" data-bind="click:firstPage"><img src="imgs/logo.png" alt="pile on logo" /></a>
+				</div>
+				<div class="logotitle">
+					<h1><a href="#nogo" data-bind="click: firstPage">Pile On</a></h1>
+					<p>Free piles of materials near you!</p>
+				</div>
+				<div class="clear"></div>
 			</div>
-			<div class="clear"></div>
 			<div class="about" data-bind="click:toggleAbout">
-				<div class="icon-info"></div>
+				<p>i</p>
 			</div>
 		</div>
 		<!-- /ko -->
@@ -41,7 +45,7 @@
 		<div class="topnav topnav-pg2">
 			<div class="btn-home" data-bind="click:firstPage">
 				<div class="icon-home icon-large"></div>
-				<p>PileOn</p>
+				<p>Pile On</p>
 			</div>
 			<!-- ko foreach: categories -->
 			<!-- ko if: active -->
@@ -60,6 +64,9 @@
 					Woodchips
 					<!-- /ko -->
 				</div>
+				<p class="title-numlocations">
+					<span data-bind="text:numPiles()"></span><span> locations.</span>
+				</p>
 			</div>
 			<!-- /ko -->
 			<!-- /ko -->
@@ -70,7 +77,7 @@
 		<div class="topnav topnav-pg2">
 			<div class="btn-home" data-bind="click:firstPage">
 				<div class="icon-home icon-large"></div>
-				<p>PileOn</p>
+				<p>Pile On</p>
 			</div>
 			<!-- ko foreach: categories -->
 			<!-- ko if: active -->
@@ -94,20 +101,21 @@
 			<div class="clear"></div>
 		</div>
 		
-		<div id="pageWrap" data-bind="css: {'pagewrap-leaves': pageWrapClass()==0, 'pagewrap-pineneedles': pageWrapClass()==1, 'pagewrap-rocks': pageWrapClass()==2, 'pagewrap-woodchips': pageWrapClass()==3}, style: {width: viewportWidth()+'px', height: (viewportHeight()-190)+'px'}">
+		<div id="pageWrap" data-bind="style: {width: viewportWidth()+'px', height: (viewportHeight()-190)+'px'}">
 			<div id="pageWrapInner" data-bind="style: {width: (viewportWidth()*pageCount())+'px', left: (0 + (-currentPage() * viewportWidth()))+'px'}">
 				<!-- PAGE1 -->
 				<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
 					<div id="categories" data-bind="foreach: categories">
+						
 						<div class="category" data-category="" data-bind="attr: {'data-category': id}, css:{'category-leaves': id()==0, 'category-pineneedles': id()==1,'category-rocks': id()==2,'category-woodchips': id()==3}, click: nextPage ">
-							<div class="imgicon" data-bind="css: {'imgicon-leaves': id()==0,'imgicon-pineneedles': id()==1,'imgicon-rocks': id()==2,'imgicon-woodchips': id()==3}"></div>
-							<div class="type">
-								<p><span data-bind="text: name"></span><span class="rightarrow icon-circle-arrow-right"></span></p>
+							<div class="catwrap">
+								<div class="type">
+									<p><span data-bind="text: name"></span><span class="rightarrow icon-circle-arrow-right"></span></p>
+								</div>
+								<div class="locs">
+									<p class="numlocs" data-bind="text: numPiles"></p>
+								</div>
 							</div>
-							<div class="locs">
-								<p class="numlocs" data-bind="text: numPiles"></p>
-							</div>
-							
 						</div>
 					</div>
 					
@@ -121,28 +129,36 @@
 						<!-- ko foreach: piles -->
 						<div class="location" data-bind="click: nextPage, attr: {'data-pile': id}, css:{'location-leaves': $parent.id()==0, 'location-pineneedles': $parent.id()==1, 'location-rocks': $parent.id()==2, 'location-woodchips': $parent.id()==3}">
 							<div class="topline">
-								<span class="amount">
-									<!-- ko if: amount() == 1 -->
-									Little
-									<!-- /ko -->
-									<!-- ko if: amount() == 2 -->
-									Some
-									<!-- /ko -->
-									<!-- ko if: amount() == 3 -->
-									Enough
-									<!-- /ko -->
-									<!-- ko if: amount() == 4 -->
-									Plenty
-									<!-- /ko -->
-									<!-- ko if: amount() == 5 -->
-									Lots
-									<!-- /ko -->
-									<!-- ko if: amount() == 6 -->
-									Tons
-									<!-- /ko -->
-								</span>
-								<span class="distance" data-bind="text: distance"></span>.0<span style="opacity:0.25;">mi</span>
-								<span class="update" data-bind="text: firstTimeStamp"></span><span style="opacity:0.25;">h</span>
+								<div class="thumb"></div>
+								<div class="amount">
+									<span>
+										<!-- ko if: amount() == 1 -->
+										Little
+										<!-- /ko -->
+										<!-- ko if: amount() == 2 -->
+										Some
+										<!-- /ko -->
+										<!-- ko if: amount() == 3 -->
+										Enough
+										<!-- /ko -->
+										<!-- ko if: amount() == 4 -->
+										Plenty
+										<!-- /ko -->
+										<!-- ko if: amount() == 5 -->
+										Lots
+										<!-- /ko -->
+										<!-- ko if: amount() == 6 -->
+										Tons
+										<!-- /ko -->
+									</span>
+								</div>
+								<div class="distance">
+									<span data-bind="text: distance"></span>.0<span style="opacity:0.5;">mi</span>
+								</div>
+								<div class="update">
+									<span data-bind="text: firstTimeStamp"></span><span style="opacity:0.5;">h</span>
+								</div>
+								<div class="clear"></div>
 							</div>
 							<div class="location-address">
 								<p>123 Main Street, Minneapolis, MN 55414</p>
@@ -266,7 +282,7 @@
 			</div>
 		</div>
 		
-		<div id="newPileForm" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-94)+'px', left: createPileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
+		<div id="newPileForm" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-92)+'px', left: createPileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
 			<div class="inner">
 				<div class="header">
 					<h1>New Pile</h1>
@@ -359,7 +375,7 @@
 			</div>
 		</div>
 		
-		<div id="updatePileForm" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-94)+'px', left: updatePileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
+		<div id="updatePileForm" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-92)+'px', left: updatePileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
 			<div class="inner">
 				<div class="header">
 					<h1>Update Pile</h1>
@@ -442,7 +458,7 @@
 					</div>
 					<div class="action" data-action="update" data-bind="style: {display: (currentPage() == 0 || currentPage() == 2) && createPileProcessActive() == false && updatePileProcessActive() == false ? 'block' : 'none'}, click: updatePile">
 						<div class="icon-refresh icon-large"></div>
-						<p>Update</p>
+						<p>Status</p>
 					</div>
 					<div class="action" data-action="listview" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}, css: {'action-disabled': listViewActive() == true }, click: changeViewMode">
 						<div class="icon-reorder icon-large"></div>
