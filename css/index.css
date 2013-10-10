@@ -493,7 +493,7 @@ strong {
 #locations .location .chart-little {
 	width:280px;
 	height:150px;
-	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -799px;
+	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -750px;
 	position:absolute;
 	top:0;
 	left:0;
@@ -502,7 +502,7 @@ strong {
 #locations .location .chart-some {
 	width:280px;
 	height:150px;
-	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -649px;
+	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -600px;
 	position:absolute;
 	top:0;
 	left:0;
@@ -511,7 +511,7 @@ strong {
 #locations .location .chart-enough {
 	width:280px;
 	height:150px;
-	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -499px;
+	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -450px;
 	position:absolute;
 	top:0;
 	left:0;
@@ -520,7 +520,7 @@ strong {
 #locations .location .chart-plenty {
 	width:280px;
 	height:150px;
-	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -349px;
+	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -300px;
 	position:absolute;
 	top:0;
 	left:0;
@@ -529,7 +529,7 @@ strong {
 #locations .location .chart-lots {
 	width:280px;
 	height:150px;
-	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -199px;
+	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -150px;
 	position:absolute;
 	top:0;
 	left:0;
@@ -538,7 +538,7 @@ strong {
 #locations .location .chart-tons {
 	width:280px;
 	height:150px;
-	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -49px;
+	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px 0px;
 	position:absolute;
 	top:0;
 	left:0;
