@@ -851,25 +851,27 @@ strong {
 	}
 }
 @media (max-width:479px) {
-	#categories,
-	#locations {
+	#categories {
 		font-size:0.7em;
 	}
 	#categories .category .type {
 		left:2em;
 	}
+	#locations .location {
+		height:8.175em;
+		margin:5px;
+	}
+	#locations .location .title {
+		font-size:0.9em;
+	}
+	#locations .location .title .amount {
+		font-size:1.5em;
+	}
+	#locations .location .title .distance {
+		font-size:1.25em;
+	}
 	.topnav .logowrap .logotitle p {
 		display:none;
-	}
-	#locations .location .amount {
-		margin:0 0 0 1.95em;
-	}
-	#locations .location .location-address {
-		font-size:1.4em;
-	}
-	#locations .location .location-address p {
-		margin:0.2em 0 0 3.05em;
-		top:0.6em;
 	}
 	#newPileForm .address input,
 	#newPileForm .description textarea {
