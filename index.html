@@ -8,6 +8,7 @@
 		<meta name="description" content="A civic app that enables crowdsourcing of free piles of materials.">
 		
 		<link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
 		<link href="css/reset.css" rel="stylesheet" type="text/css">
 		<link href="css/index.css" rel="stylesheet" type="text/css">
 		<link href="fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css">
@@ -128,41 +129,42 @@
 					<div id="locations">
 						<!-- ko foreach: piles -->
 						<div class="location" data-bind="click: nextPage, attr: {'data-pile': id}, css:{'location-leaves': $parent.id()==0, 'location-pineneedles': $parent.id()==1, 'location-rocks': $parent.id()==2, 'location-woodchips': $parent.id()==3}">
-							<div class="topline">
-								<div class="thumb"></div>
-								<div class="amount">
-									<span>
-										<!-- ko if: amount() == 1 -->
-										Little
-										<!-- /ko -->
-										<!-- ko if: amount() == 2 -->
-										Some
-										<!-- /ko -->
-										<!-- ko if: amount() == 3 -->
-										Enough
-										<!-- /ko -->
-										<!-- ko if: amount() == 4 -->
-										Plenty
-										<!-- /ko -->
-										<!-- ko if: amount() == 5 -->
-										Lots
-										<!-- /ko -->
-										<!-- ko if: amount() == 6 -->
-										Tons
-										<!-- /ko -->
-									</span>
-								</div>
-								<div class="distance">
-									<span data-bind="text: distance"></span>.0<span style="opacity:0.5;">mi</span>
+							
+							<div data-bind="css: {'chart-little':amount()==1, 'chart-some':amount()==2, 'chart-enough':amount()==3, 'chart-plenty':amount()==4, 'chart-lots':amount()==5, 'chart-tons':amount()==6 }"></div>
+							
+							<!--
+							<div class="info">
+								<div class="address">
+									<p>123 Main Street, Minneapolis, MN 55414</p>
 								</div>
 								<div class="update">
-									<span data-bind="text: firstTimeStamp"></span><span style="opacity:0.5;">h</span>
+									<span>Last updated </span><span data-bind="text:firstTimeStamp()"></span><span>h ago.</span>
 								</div>
-								<div class="clear"></div>
 							</div>
-							<div class="location-address">
-								<p>123 Main Street, Minneapolis, MN 55414</p>
+							-->
+							
+							<div class="title">
+								<!-- ko if: amount() == 1 -->
+								<span class="amount">Little </span><span>is available.</span>
+								<!-- /ko -->
+								<!-- ko if: amount() == 2 -->
+								<span class="amount">Some </span><span>is available.</span>
+								<!-- /ko -->
+								<!-- ko if: amount() == 3 -->
+								<span class="amount">Enough </span><span>is available.</span>
+								<!-- /ko -->
+								<!-- ko if: amount() == 4 -->
+								<span class="amount">Plenty </span><span>is available.</span>
+								<!-- /ko -->
+								<!-- ko if: amount() == 5 -->
+								<span class="amount">Lots </span><span>is available.</span>
+								<!-- /ko -->
+								<!-- ko if: amount() == 6 -->
+								<span class="amount">Tons </span><span>is available.</span>
+								<!-- /ko -->
+								<span class="distance" data-bind="text: distance()"></span><span> miles away.</span>
 							</div>
+							
 						</div>
 						<!-- /ko -->
 					</div>

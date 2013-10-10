@@ -183,7 +183,7 @@ strong {
 #pageWrap {
 	margin:1px 0 0 0;
 	background:#535353 url('../imgs/bg3.png');
-	overflow-y:scroll;
+	overflow-y:auto;
 	overflow-x:hidden;
 	position:relative;
 	top:0;
@@ -422,109 +422,137 @@ strong {
 	
 }
 #locations .location {
-	height:6.25em;
-	margin:1px 0;
+	height:9.35em;
+	margin:10px;
+	box-shadow:0px 2px 4px rgba(0,0,0,0.3);
+	overflow:hidden;
 	position:relative;
 }
+#locations .location .info {
+	max-width:75%;
+	overflow:hidden;
+	text-align:right;
+	position:absolute;
+	top:0.5em;
+	right:1em;
+}
+#locations .location .title {
+	margin:0.5em 0 0 0;
+	padding:0.2em 0.8em;
+	background:rgba(0,0,0,0.7);
+	color:#AAA;
+	font-weight:400;
+	position:absolute;
+	bottom:2px;
+	left:0;
+	z-index:4;
+}
+#locations .location .title .amount {
+	color:#FFF;
+	font-size:2.5em;
+	letter-spacing:-0.05em;
+}
+#locations .location .title .distance {
+	color:#FFF;
+	font-size:1.5em;
+	letter-spacing:-0.05em;
+}
+#locations .location .address {
+	font-family:"Open Sans";
+	font-size:0.9em;
+	font-weight:300;
+	position:relative;
+	z-index:3;
+}
+#locations .location .update {
+	color:#CCC;
+	font-family:"Open Sans";
+	font-size:0.8em;
+	font-weight:300;
+	position:relative;
+	z-index:2;
+}
+
 #locations .location-leaves {
-	background:rgba(235,215,0,0.15);
+	background:rgba(235,215,0,0.3);
 	color:#FFF;
 }
 #locations .location-pineneedles {
-	background:rgba(116,172,36,0.15);
+	background:rgba(116,172,36,0.3);
 	color:#FFF;
 }
 #locations .location-rocks {
-	background:rgba(182,186,189,0.15);
+	background:rgba(135,151,179,0.3);
 	color:#FFF;
 }
 #locations .location-woodchips {
-	background:rgba(191,152,111,0.15);
+	background:rgba(191,152,111,0.3);
 	color:#FFF;
 }
-#locations .location-leaves .topline {
-	border-bottom:1px solid #EBD700;
-}
-#locations .location-pineneedles .topline {
-	border-bottom:1px solid #74AC24;
-}
-#locations .location-rocks .topline {
-	border-bottom:1px solid #B6BABD;
-}
-#locations .location-woodchips .topline {
-	border-bottom:1px solid #BF986F;
-}
-#locations .location-leaves .topline .thumb {
-	background:transparent url('../imgs/icons-categories.png')no-repeat -125px -25px;
-}
-#locations .location-pineneedles .topline .thumb {
-	background:transparent url('../imgs/icons-categories.png')no-repeat -25px -25px;
-}
-#locations .location-rocks .topline .thumb {
-	background:transparent url('../imgs/icons-categories.png')no-repeat -225px -25px;
-}
-#locations .location-woodchips .topline .thumb {
-	background:transparent url('../imgs/icons-categories.png')no-repeat -325px -25px;
-}
-#locations .location .topline {
-	padding:0;
-	font-size:2.2em;
-	font-weight:400;
-	position:relative;
-	top:0.5em;
-}
-#locations .location .topline .thumb {
-	width:1.4em;
-	height:1.4em;
+
+#locations .location .chart-little {
+	width:280px;
+	height:150px;
+	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -799px;
 	position:absolute;
 	top:0;
-	left:1.425em;
+	left:0;
+	z-index:0;
 }
-#locations .location .amount {
-	width:4.5em;
-	margin:0 0 0 2.85em;
-	padding:0.2em 0.4em;
-	background:rgba(0,0,0,0.7);
-	float:left;
+#locations .location .chart-some {
+	width:280px;
+	height:150px;
+	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -649px;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:0;
 }
-#locations .location .distance {
-	width:4em;
-	padding:0.2em 0.4em;
-	background:rgba(0,0,0,0.7);
-	float:left;
-	font-size:0.6em;
-	text-align:right;
-	position:relative;
-	top:0.95em;
+#locations .location .chart-enough {
+	width:280px;
+	height:150px;
+	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -499px;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:0;
 }
-#locations .location .update {
-	width:2em;
-	padding:0.2em 0.4em;
-	background:rgba(0,0,0,0.7);
-	float:left;
-	font-size:0.6em;
-	text-align:right;
-	position:relative;
-	top:0.95em;
+#locations .location .chart-plenty {
+	width:280px;
+	height:150px;
+	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -349px;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:0;
 }
+#locations .location .chart-lots {
+	width:280px;
+	height:150px;
+	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -199px;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:0;
+}
+#locations .location .chart-tons {
+	width:280px;
+	height:150px;
+	background:transparent url('../imgs/chart-locations-reversed.png') no-repeat 0px -49px;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:0;
+}
+
 #locations .location:hover {
 	cursor:pointer;
 }
-#locations .location:hover .amount {
+#locations .location:hover .title .amount {
 	font-weight:700;
 }
-#locations .location-address p {
-	margin:0.2em 0 0 6.25em;
-	padding:0.2em 0 0.2em 0.9em;
-	background:rgba(0,0,0,0.7);
-	color:#CCC;
-	font-weight:300;
-	overflow:hidden;
-	text-overflow:ellipsis;
-	white-space:nowrap;
-	position:relative;
-	top:0.9em;
-}
+
+
 
 #pile {
 	margin:0;
@@ -832,9 +860,6 @@ strong {
 	}
 	.topnav .logowrap .logotitle p {
 		display:none;
-	}
-	#locations .location .topline .thumb {
-		left:0.5em;
 	}
 	#locations .location .amount {
 		margin:0 0 0 1.95em;
