@@ -5,13 +5,12 @@
 		<meta charset="utf-8">
 		<meta name="author" content="Tim Leisio">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="A civic app that enables crowdsourcing of free piles of materials.">
+		<meta name="description" content="An app for community distribution of free piles of materials.">
 		
 		<link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
 		<link href="css/reset.css" rel="stylesheet" type="text/css">
 		<link href="css/index.css" rel="stylesheet" type="text/css">
-		<link href="fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css">
 		
 		<script type="text/javascript" src="js/libs/modernizr.js"></script>
 		<!--<script type="text/javascript" src="js/libs/quo.js"></script>-->
@@ -26,66 +25,90 @@
 	<body>
 		<!-- ko if: currentPage() == 0 -->
 		<div class="topnav topnav-home">
+			<div class="menu" data-bind="click:toggleMenu">
+				<div class="btn">
+					<div class="icon-menu-open"></div>
+				</div>
+			</div>
 			<div class="logowrap">
 				<div class="logoimg">
-					<a href="#nogo" data-bind="click:firstPage"><img src="imgs/logo.png" alt="pile on logo" /></a>
+					<img src="imgs/logo.png" alt="pile on logo" data-bind="click:firstPage" />
 				</div>
 				<div class="logotitle">
-					<h1><a href="#nogo" data-bind="click: firstPage">Pile On</a></h1>
-					<p>Free piles of materials near you!</p>
+					<h1 data-bind="click: firstPage">Pile On</h1>
 				</div>
 				<div class="clear"></div>
 			</div>
-			<div class="about" data-bind="click:toggleAbout">
-				<p>i</p>
-			</div>
+			<div class="clear"></div>
 		</div>
 		<!-- /ko -->
 		
 		<!-- ko if: currentPage() == 1 -->
 		<div class="topnav topnav-pg2">
-			<div class="btn-home" data-bind="click:firstPage">
-				<div class="icon-home icon-large"></div>
-				<p>Pile On</p>
+		
+			<div class="menu" data-bind="click:toggleMenu">
+				<div class="btn">
+					<div class="icon-menu-open"></div>
+				</div>
 			</div>
+			
+			<div class="btn-home action" data-bind="click:firstPage">
+				<div class="icon-action icon-action-home"></div>
+				<p>Home</p>
+			</div>
+			
 			<!-- ko foreach: categories -->
 			<!-- ko if: active -->
-			<div class="title" data-bind="css: {'title-leaves': id()==0,'title-pineneedles': id()==1,'title-rocks': id()==2,'title-woodchips': id()==3}">
-				<div class="title-verbage">
-					<!-- ko if: id()==0 -->
-					Leaves
-					<!-- /ko -->
-					<!-- ko if: id()==1 -->
-					Pine Needles
-					<!-- /ko -->
-					<!-- ko if: id()==2 -->
-					Rocks
-					<!-- /ko -->
-					<!-- ko if: id()==3 -->
-					Woodchips
-					<!-- /ko -->
-				</div>
-				<p class="title-numlocations">
-					<span data-bind="text:numPiles()"></span><span> locations.</span>
-				</p>
+			<div class="title">
+				
+				<!-- ko if: id()==0 --><img src="imgs/icon-cat-dirt.png" /><h1><span> Dirt: </span><span data-bind="text:numPiles()"></span><span> locations</span></h1><!-- /ko -->
+				<!-- ko if: id()==1 --><img src="imgs/icon-cat-hay.png" /><h1><span> Hay &amp; Grass: </span><span data-bind="text:numPiles()"></span><span> locations</span></h1><!-- /ko -->
+				<!-- ko if: id()==2 --><img src="imgs/icon-cat-leaves.png" /><h1><span> Leaves: </span><span data-bind="text:numPiles()"></span><span> locations</span></h1><!-- /ko -->
+				<!-- ko if: id()==3 --><img src="imgs/icon-cat-mulch.png" /><h1><span> Mulch: </span><span data-bind="text:numPiles()"></span><span> locations</span></h1><!-- /ko -->
+				<!-- ko if: id()==4 --><img src="imgs/icon-cat-pineneedles.png" /><h1><span> Pine Needles: </span><span data-bind="text:numPiles()"></span><span> locations</span></h1><!-- /ko -->
+				<!-- ko if: id()==5 --><img src="imgs/icon-cat-rocks.png" /><h1><span> Rocks: </span><span data-bind="text:numPiles()"></span><span> locations</span></h1><!-- /ko -->
+				<!-- ko if: id()==6 --><img src="imgs/icon-cat-sand.png" /><h1><span> Sand: </span><span data-bind="text:numPiles()"></span><span> locations</span></h1><!-- /ko -->
+				<!-- ko if: id()==7 --><img src="imgs/icon-cat-sticks.png" /><h1><span> Sticks: </span><span data-bind="text:numPiles()"></span><span> locations</span></h1><!-- /ko -->
+				<!-- ko if: id()==8 --><img src="imgs/icon-cat-woodchips.png" /><h1><span> Woodchips: </span><span data-bind="text:numPiles()"></span><span> locations</span></h1><!-- /ko -->
+				
 			</div>
 			<!-- /ko -->
 			<!-- /ko -->
+			
+			<div class="clear"></div>
+			
 		</div>
 		<!-- /ko -->
 		
 		<!-- ko if: currentPage() == 2 -->
 		<div class="topnav topnav-pg2">
-			<div class="btn-home" data-bind="click:firstPage">
-				<div class="icon-home icon-large"></div>
-				<p>Pile On</p>
+			
+			<div class="menu" data-bind="click:toggleMenu">
+				<div class="btn">
+					<div class="icon-menu-open"></div>
+				</div>
 			</div>
+			
+			<div class="btn-home action" data-bind="click:firstPage">
+				<div class="icon-action icon-action-home"></div>
+				<p>Home</p>
+			</div>
+			
 			<!-- ko foreach: categories -->
 			<!-- ko if: active -->
 			<!-- ko foreach: piles -->
 			<!-- ko if: active -->
-			<div class="title" data-bind="css: {'title-leaves': $parent.id()==0,'title-pineneedles': $parent.id()==1,'title-rocks': $parent.id()==2,'title-woodchips': $parent.id()==3}">
-				<div class="title-verbage">Pile &#35;<span data-bind="text: id"></span></div>
+			<div class="title">
+				<!-- ko if: $parent.id() == 0 --><img src="imgs/icon-cat-dirt.png" /><!-- /ko -->
+				<!-- ko if: $parent.id() == 1 --><img src="imgs/icon-cat-hay.png" /><!-- /ko -->
+				<!-- ko if: $parent.id() == 2 --><img src="imgs/icon-cat-leaves.png" /><!-- /ko -->
+				<!-- ko if: $parent.id() == 3 --><img src="imgs/icon-cat-mulch.png" /><!-- /ko -->
+				<!-- ko if: $parent.id() == 4 --><img src="imgs/icon-cat-pineneedles.png" /><!-- /ko -->
+				<!-- ko if: $parent.id() == 5 --><img src="imgs/icon-cat-rocks.png" /><!-- /ko -->
+				<!-- ko if: $parent.id() == 6 --><img src="imgs/icon-cat-sand.png" /><!-- /ko -->
+				<!-- ko if: $parent.id() == 7 --><img src="imgs/icon-cat-sticks.png" /><!-- /ko -->
+				<!-- ko if: $parent.id() == 8 --><img src="imgs/icon-cat-woodchips.png" /><!-- /ko -->
+				<h1>Pile &#35;<span data-bind="text: id"></span></h1>
 			</div>
 			<!-- /ko -->
 			<!-- /ko -->
@@ -102,22 +125,26 @@
 			<div class="clear"></div>
 		</div>
 		
-		<div id="pageWrap" data-bind="style: {width: viewportWidth()+'px', height: (viewportHeight()-190)+'px'}">
+		<div id="pageWrap" data-bind="style: {width: viewportWidth()+'px', height: (viewportHeight()-128)+'px'}">
 			<div id="pageWrapInner" data-bind="style: {width: (viewportWidth()*pageCount())+'px', left: (0 + (-currentPage() * viewportWidth()))+'px'}">
 				<!-- PAGE1 -->
 				<div class="page" data-bind="style: {width: (viewportWidth())+'px'}">
-					<div id="categories" data-bind="foreach: categories">
+					<div id="categories">
 						
-						<div class="category" data-category="" data-bind="attr: {'data-category': id}, css:{'category-leaves': id()==0, 'category-pineneedles': id()==1,'category-rocks': id()==2,'category-woodchips': id()==3}, click: nextPage ">
-							<div class="catwrap">
-								<div class="type">
-									<p><span data-bind="text: name"></span><span class="rightarrow icon-circle-arrow-right"></span></p>
-								</div>
-								<div class="locs">
-									<p class="numlocs" data-bind="text: numPiles"></p>
+						<!-- ko foreach: categories -->
+						<div class="category" data-category="" data-bind="attr: {'data-category': id}, css:{'category-dirt': id()==0, 'category-hay': id()==1,'category-leaves': id()==2,'category-mulch': id()==3,'category-pineneedles': id()==4,'category-rocks': id()==5,'category-sand': id()==6,'category-sticks': id()==7,'category-woodchips': id()==8}, click: nextPage ">
+							<div class="catinner">
+								<div class="verbage">
+									<h1 class="float-right" data-bind="text: numPiles"></h1>
+									<h1 class="float-left" data-bind="text: name"></h1>
+									<div class="clear"></div>
 								</div>
 							</div>
 						</div>
+						<!-- /ko -->
+						
+						<div class="clear"></div>
+						
 					</div>
 					
 				</div>
@@ -128,43 +155,29 @@
 					<!-- ko if: active -->
 					<div id="locations">
 						<!-- ko foreach: piles -->
-						<div class="location" data-bind="click: nextPage, attr: {'data-pile': id}, css:{'location-leaves': $parent.id()==0, 'location-pineneedles': $parent.id()==1, 'location-rocks': $parent.id()==2, 'location-woodchips': $parent.id()==3}">
-							
-							<div data-bind="css: {'chart-little':amount()==1, 'chart-some':amount()==2, 'chart-enough':amount()==3, 'chart-plenty':amount()==4, 'chart-lots':amount()==5, 'chart-tons':amount()==6 }"></div>
-							
-							<!--
-							<div class="info">
-								<div class="address">
-									<p>123 Main Street, Minneapolis, MN 55414</p>
-								</div>
-								<div class="update">
-									<span>Last updated </span><span data-bind="text:firstTimeStamp()"></span><span>h ago.</span>
-								</div>
-							</div>
-							-->
-							
+						<div class="location" data-bind="click: nextPage, attr: {'data-pile': id}">
+							<div data-bind="css: {'chart-little':amount()==1, 'chart-some':amount()==2, 'chart-lots':amount()==3, 'chart-tons':amount()==4 }"></div>
 							<div class="title">
 								<!-- ko if: amount() == 1 -->
-								<span class="amount">Little </span><span>is available.</span>
+									<h1>Little</h1>
+									<p>available</p>
 								<!-- /ko -->
 								<!-- ko if: amount() == 2 -->
-								<span class="amount">Some </span><span>is available.</span>
+									<h1>Some</h1>
+									<p>available</p>
 								<!-- /ko -->
 								<!-- ko if: amount() == 3 -->
-								<span class="amount">Enough </span><span>is available.</span>
+									<h1>Lots</h1>
+									<p>available</p>
 								<!-- /ko -->
 								<!-- ko if: amount() == 4 -->
-								<span class="amount">Plenty </span><span>is available.</span>
+									<h1>Tons</h1>
+									<p>available</p>
 								<!-- /ko -->
-								<!-- ko if: amount() == 5 -->
-								<span class="amount">Lots </span><span>are available.</span>
-								<!-- /ko -->
-								<!-- ko if: amount() == 6 -->
-								<span class="amount">Tons </span><span>are available.</span>
-								<!-- /ko -->
-								<span class="distance" data-bind="text: distance()"></span><span> miles away.</span>
+								<h2 data-bind="text: distance()"></h2>
+								<p>miles away</p>
 							</div>
-							
+							<div class="mouseover-border"></div>
 						</div>
 						<!-- /ko -->
 					</div>
@@ -180,98 +193,76 @@
 						<!-- ko foreach: piles -->
 						<!-- ko if: active -->
 						
-						<div class="map"></div>
-						
 						<div class="info">
-							<h3>Info</h3>
-							<!-- ko if: amount() == 1 -->
-							<div>A <strong>little</strong> bit of <strong><span data-bind="text: category"></span></strong> are available <strong><span data-bind="text: distance"></span>.0</strong> miles away.</div>
-							<!-- /ko -->
-							<!-- ko if: amount() == 2 -->
-							<div><strong>Some</strong> <strong><span data-bind="text: category"></span></strong> are available <strong><span data-bind="text: distance"></span>.0</strong> miles away.</div>
-							<!-- /ko -->
-							<!-- ko if: amount() == 3 -->
-							<div><strong>Enough</strong> <strong><span data-bind="text: category"></span></strong> are available <strong><span data-bind="text: distance"></span>.0</strong> miles away.</div>
-							<!-- /ko -->
-							<!-- ko if: amount() == 4 -->
-							<div><strong>Plenty</strong> of <strong><span data-bind="text: category"></span></strong> are available <strong><span data-bind="text: distance"></span>.0</strong> miles away.</div>
-							<!-- /ko -->
-							<!-- ko if: amount() == 5 -->
-							<div><strong>Lots</strong> of <strong><span data-bind="text: category"></span></strong> are available <strong><span data-bind="text: distance"></span>.0</strong> miles away.</div>
-							<!-- /ko -->
-							<!-- ko if: amount() == 6 -->
-							<div><strong>Tons</strong> of <strong><span data-bind="text: category"></span></strong> are available <strong><span data-bind="text: distance"></span>.0</strong> miles away.</div>
-							<!-- /ko -->
-							<br />
-							<div>The status of this pile was last updated <strong><span data-bind="text: firstTimeStamp"></span></strong> hours</strong> ago.</div>
-							<br />
-							<address>123 Main Street, Minneapolis, MN 55414</address>
-						</div>
-						
-						<div class="chart">
 							<!-- ko if: amount() == 0 -->
-								<img src="imgs/chart-none.png" alt="none amount chart" />
+							<h1>None available!</h1>
 							<!-- /ko -->
 							<!-- ko if: amount() == 1 -->
-								<img src="imgs/chart-little.png" alt="little amount chart" />
+							<h1>Little available, <span data-bind="text: distance"></span> miles away.</h1>
 							<!-- /ko -->
 							<!-- ko if: amount() == 2 -->
-								<img src="imgs/chart-some.png" alt="some amount chart" />
+							<h1>Some available, <span data-bind="text: distance"></span> miles away.</h1>
 							<!-- /ko -->
 							<!-- ko if: amount() == 3 -->
-								<img src="imgs/chart-enough.png" alt="enough amount chart" />
+							<h1>Lots available, <span data-bind="text: distance"></span> miles away.</h1>
 							<!-- /ko -->
 							<!-- ko if: amount() == 4 -->
-								<img src="imgs/chart-plenty.png" alt="plenty amount chart" />
+							<h1>Tons available, <span data-bind="text: distance"></span> miles away.</h1>
 							<!-- /ko -->
-							<!-- ko if: amount() == 5 -->
-								<img src="imgs/chart-lots.png" alt="lots amount chart" />
+							<p class="address">123 Main Street</p>
+							<p class="address">Minneapolis, MN 55414</p>
+							<p class="update">Last updated <span data-bind="text: firstTimeStamp"></span> hours ago.</p>
+							
+							<!-- ko if: amount() == 0 -->
+							<div class="chart">
+								<img src="imgs/chart-none.png" alt="none chart image" />
+							</div>
 							<!-- /ko -->
-							<!-- ko if: amount() == 6 -->
-								<img src="imgs/chart-tons.png" alt="tons amount chart" />
+							<!-- ko if: amount() == 1 -->
+							<div class="chart">
+								<img src="imgs/chart-little.png" alt="little chart image" />
+							</div>
 							<!-- /ko -->
+							<!-- ko if: amount() == 2 -->
+							<div class="chart">
+								<img src="imgs/chart-some.png" alt="some chart image" />
+							</div>
+							<!-- /ko -->
+							<!-- ko if: amount() == 3 -->
+							<div class="chart">
+								<img src="imgs/chart-lots.png" alt="lots chart image" />
+							</div>
+							<!-- /ko -->
+							<!-- ko if: amount() == 4 -->
+							<div class="chart">
+								<img src="imgs/chart-tons.png" alt="tons chart image" />
+							</div>
+							<!-- /ko -->
+							
 						</div>
 						
 						<div class="notes">
-							<h3>Notes</h3>
-							<p>Go in the park towards the right most trail and walk until you see the sign. Bring your own shovel!</p>
+							<div class="lquo">&ldquo;</div>
+							<div class="rquo">&rdquo;</div>
+							<p>Take the first trail from the entrance to the left. BYOS - bring your own shovels.</p>
 						</div>
 						
-						<div class="history">
-							<h3>History</h3>
-							<div class="entry">
-								<!-- ko if: amount() == 0 -->
-								<div class="amount">None</div>
-								<!-- /ko -->
-								<!-- ko if: amount() == 1 -->
-								<div class="amount">Little</div>
-								<!-- /ko -->
-								<!-- ko if: amount() == 2 -->
-								<div class="amount">Some</div>
-								<!-- /ko -->
-								<!-- ko if: amount() == 3 -->
-								<div class="amount">Enough</div>
-								<!-- /ko -->
-								<!-- ko if: amount() == 4 -->
-								<div class="amount">Plenty</div>
-								<!-- /ko -->
-								<!-- ko if: amount() == 5 -->
-								<div class="amount">Lots</div>
-								<!-- /ko -->
-								<!-- ko if: amount() == 6 -->
-								<div class="amount">Tons</div>
-								<!-- /ko -->
-								<p><span data-bind="text: firstTimeStamp"></span>.0 hours ago</p>
-							</div>
-							<div class="entry">
-								<div class="amount">Tons</div>
-								<p>&#35;&#35; hour(s) ago</p>
-							</div>
-							<div class="entry">
-								<div class="amount">Tons</div>
-								<p>&#35;&#35; day(s) ago</p>
+						<div class="map"></div>
+						
+						<div class="updatepile">
+							<h2>Are you at this pile?</h2>
+							<div class="btn-blue" data-bind="click: updatePile">
+								<div class="inner">
+									<div class="icon-bb icon-bb-update"></div>
+									<div class="label">Be a helpful citizen and update this pile's status.</div>
+									<div class="clear"></div>
+								</div>
 							</div>
 						</div>
+						
+						
+						
+						
 						<!-- /ko -->
 						<!-- /ko -->
 						<!-- /ko -->
@@ -284,100 +275,119 @@
 			</div>
 		</div>
 		
-		<div id="newPileForm" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-92)+'px', left: createPileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
+		<div id="newPileForm" class="form" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-61)+'px', left: createPileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
 			<div class="inner">
 				<div class="header">
-					<h1>New Pile</h1>
+					<h1>Create New Pile</h1>
 				</div>
 				
 				<div class="address">
 					<h1>What is the location of the pile?</h1>
 					<div>
-						<div class="auto">
-							<div class="action" data-bind="click: getLocationFromGPS"><span class="icon-screenshot"></span> From GPS</div>
-						</div>
-						<hr style="margin:1em 0;border:none;border-bottom:1px dashed #424242;" />
-						<div class="manual">
+						<div>
 							<input type="text" value="address1">
 							<input type="text" value="address2">
 							<input type="text" value="city">
 							<input type="text" value="state">
 							<input type="text" value="zip">
 						</div>
-					</div>
-				</div>
-				
-				<div class="types">
-					<h1>What type of material do you have?</h1>
-					<div class="type" data-type="dirt" data-bind="click: newPileMaterialSelect">Dirt</div>
-					<div class="type" data-type="hay" data-bind="click: newPileMaterialSelect">Hay</div>
-					<div class="type type-leaves" data-type="leaves" data-bind="click: newPileMaterialSelect">Leaves</div>
-					<div class="type" data-type="mulch" data-bind="click: newPileMaterialSelect">Mulch</div>
-					<div class="type" data-type="pebbles" data-bind="click: newPileMaterialSelect">Pebbles</div>
-					<div class="type type-pineneedles" data-type="pineneedles" data-bind="click: newPileMaterialSelect">Pine Needles</div>
-					<div class="type type-rocks" data-type="rocks" data-bind="click: newPileMaterialSelect">Rocks</div>
-					<div class="type" data-type="sticks" data-bind="click: newPileMaterialSelect">Sticks</div>
-					<div class="type type-woodchips" data-type="woodchips" data-bind="click: newPileMaterialSelect">Woodchips</div>
-					<div class="clear"></div>
-				</div>
-				
-				<div class="amount">
-					<h1>How much material do you have?</h1>
-					<div class="visual">
-						<div class="chart">
-							<!-- ko if: materialAmount() == 0 -->
-								<img src="imgs/chart-none.png" alt="none amount chart" />
-							<!-- /ko -->
-							<!-- ko if: materialAmount() == 1 -->
-								<img src="imgs/chart-little.png" alt="little amount chart" />
-							<!-- /ko -->
-							<!-- ko if: materialAmount() == 2 -->
-								<img src="imgs/chart-some.png" alt="some amount chart" />
-							<!-- /ko -->
-							<!-- ko if: materialAmount() == 3 -->
-								<img src="imgs/chart-enough.png" alt="enough amount chart" />
-							<!-- /ko -->
-							<!-- ko if: materialAmount() == 4 -->
-								<img src="imgs/chart-plenty.png" alt="plenty amount chart" />
-							<!-- /ko -->
-							<!-- ko if: materialAmount() == 5 -->
-								<img src="imgs/chart-lots.png" alt="lots amount chart" />
-							<!-- /ko -->
-							<!-- ko if: materialAmount() == 6 -->
-								<img src="imgs/chart-tons.png" alt="tons amount chart" />
-							<!-- /ko -->
+						<br />
+						<div class="btn-blue" data-bind="click: getLocationFromGPS">
+							<div class="inner">
+								<div class="icon-bb icon-bb-target"></div>
+								<div class="label">From GPS</div>
+								<div class="clear"></div>
+							</div>
 						</div>
 					</div>
-					<div class="option" data-option="little" data-amount="1" data-bind="click: newPileMaterialAmountSelect">
-						<p>Little</p>
+				</div>
+				<hr />
+				<div class="types">
+					<h1>What type of material do you have?</h1>
+					<div class="type type-dirt" data-type="dirt" data-bind="click: newPileMaterialSelect">
+						<p>Dirt</p>
+						<div class="border"></div>
 					</div>
-					<div class="option" data-option="some" data-amount="2" data-bind="click: newPileMaterialAmountSelect">
-						<p>Some</p>
+					<div class="type type-hay" data-type="hay" data-bind="click: newPileMaterialSelect">
+						<p>Hay &amp; Grass</p>
+						<div class="border"></div>
 					</div>
-					<div class="option" data-option="enough" data-amount="3" data-bind="click: newPileMaterialAmountSelect">
-						<p>Enough</p>
+					<div class="type type-leaves" data-type="leaves" data-bind="click: newPileMaterialSelect">
+						<p>Leaves</p>
+						<div class="border"></div>
 					</div>
-					<div class="option" data-option="good" data-amount="4" data-bind="click: newPileMaterialAmountSelect">
-						<p>Plenty</p>
+					<div class="type type-mulch" data-type="mulch" data-bind="click: newPileMaterialSelect">
+						<p>Mulch</p>
+						<div class="border"></div>
 					</div>
-					<div class="option" data-option="lots" data-amount="5" data-bind="click: newPileMaterialAmountSelect">
-						<p>Lots</p>
+					<div class="type type-pineneedles" data-type="pineneedles" data-bind="click: newPileMaterialSelect">
+						<p>Pine Needles</p>
+						<div class="border"></div>
 					</div>
-					<div class="option" data-option="tons" data-amount="6" data-bind="click: newPileMaterialAmountSelect">
-						<p>Tons</p>
+					<div class="type type-rocks" data-type="rocks" data-bind="click: newPileMaterialSelect">
+						<p>Rocks</p>
+						<div class="border"></div>
+					</div>
+					<div class="type type-sand" data-type="sand" data-bind="click: newPileMaterialSelect">
+						<p>Sand</p>
+						<div class="border"></div>
+					</div>
+					<div class="type type-sticks" data-type="sticks" data-bind="click: newPileMaterialSelect">
+						<p>Sticks</p>
+						<div class="border"></div>
+					</div>
+					<div class="type type-woodchips" data-type="woodchips" data-bind="click: newPileMaterialSelect">
+						<p>Woodchips</p>
+						<div class="border"></div>
 					</div>
 					<div class="clear"></div>
 				</div>
-			
+				<hr />
+				<div class="amount">
+					<h1>How much material do you have?</h1>
+					<div class="options">
+						<div class="option" data-option="tons" data-amount="4" data-bind="click: newPileMaterialAmountSelect">
+							<p>Tons</p>
+						</div>
+						<div class="option" data-option="lots" data-amount="3" data-bind="click: newPileMaterialAmountSelect">
+							<p>Lots</p>
+						</div>
+						<div class="option" data-option="some" data-amount="2" data-bind="click: newPileMaterialAmountSelect">
+							<p>Some</p>
+						</div>
+						<div class="option" data-option="little" data-amount="1" data-bind="click: newPileMaterialAmountSelect">
+							<p>Little</p>
+						</div>
+					</div>
+					<div class="chart">
+						<!-- ko if: materialAmount() == 4 -->
+							<img src="imgs/chart-tons.png" alt="tons amount chart" />
+						<!-- /ko -->
+						<!-- ko if: materialAmount() == 3 -->
+							<img src="imgs/chart-lots.png" alt="lots amount chart" />
+						<!-- /ko -->
+						<!-- ko if: materialAmount() == 2 -->
+							<img src="imgs/chart-some.png" alt="some amount chart" />
+						<!-- /ko -->
+						<!-- ko if: materialAmount() == 1 -->
+							<img src="imgs/chart-little.png" alt="little amount chart" />
+						<!-- /ko -->
+						<!-- ko if: materialAmount() == 0 -->
+							<img src="imgs/chart-none.png" alt="none amount chart" />
+						<!-- /ko -->
+					</div>
+					<div class="clear"></div>
+				</div>
+				<hr />
 				<div class="description">
-					<h1>Notes (optional)</h1>
+					<h1>Is there any other info people should know about this pile? (optional)</h1>
 					<textarea></textarea>
 					<p style="color:#848484;font-size:0.8em;">(250 max character)</p>
 				</div>
 			</div>
 		</div>
 		
-		<div id="updatePileForm" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-92)+'px', left: updatePileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
+		<div id="updatePileForm" class="form" data-bind="style: {width: (viewportWidth())+'px', height: (viewportHeight()-61)+'px', left: updatePileProcessActive() == true ? '0px' : -(viewportWidth())+'px'}">
 			<div class="inner">
 				<div class="header">
 					<h1>Update Pile</h1>
@@ -386,53 +396,42 @@
 					<h1>Pile ID&#35;</h1>
 					<div><input type="text" /></div>
 				</div>
+				<hr />
 				<div class="amount">
-					<h1>How many woodchips are left?</h1>
-					<div class="visual">
-						<div class="chart">
-							<!-- ko if: materialAmount() == 0 -->
-								<img src="imgs/chart-none.png" alt="none amount chart" />
-							<!-- /ko -->
-							<!-- ko if: materialAmount() == 1 -->
-								<img src="imgs/chart-little.png" alt="little amount chart" />
-							<!-- /ko -->
-							<!-- ko if: materialAmount() == 2 -->
-								<img src="imgs/chart-some.png" alt="some amount chart" />
-							<!-- /ko -->
-							<!-- ko if: materialAmount() == 3 -->
-								<img src="imgs/chart-enough.png" alt="enough amount chart" />
-							<!-- /ko -->
-							<!-- ko if: materialAmount() == 4 -->
-								<img src="imgs/chart-plenty.png" alt="plenty amount chart" />
-							<!-- /ko -->
-							<!-- ko if: materialAmount() == 5 -->
-								<img src="imgs/chart-lots.png" alt="lots amount chart" />
-							<!-- /ko -->
-							<!-- ko if: materialAmount() == 6 -->
-								<img src="imgs/chart-tons.png" alt="tons amount chart" />
-							<!-- /ko -->
+					<h1>How much material is left?</h1>
+					<div class="options">
+						<div class="option" data-option="tons" data-amount="4" data-bind="click: updatePileMaterialAmountSelect">
+							<p>Tons</p>
+						</div>
+						<div class="option" data-option="lots" data-amount="3" data-bind="click: updatePileMaterialAmountSelect">
+							<p>Lots</p>
+						</div>
+						<div class="option" data-option="some" data-amount="2" data-bind="click: updatePileMaterialAmountSelect">
+							<p>Some</p>
+						</div>
+						<div class="option" data-option="little" data-amount="1" data-bind="click: updatePileMaterialAmountSelect">
+							<p>Little</p>
+						</div>
+						<div class="option" data-option="none" data-amount="0" data-bind="click: updatePileMaterialAmountSelect">
+							<p>None!</p>
 						</div>
 					</div>
-					<div class="option" data-option="none" data-amount="0" data-bind="click: updatePileMaterialAmountSelect">
-						<p>None</p>
-					</div>
-					<div class="option" data-option="little" data-amount="1" data-bind="click: updatePileMaterialAmountSelect">
-						<p>Little</p>
-					</div>
-					<div class="option" data-option="some" data-amount="2" data-bind="click: updatePileMaterialAmountSelect">
-						<p>Some</p>
-					</div>
-					<div class="option" data-option="enough" data-amount="3" data-bind="click: updatePileMaterialAmountSelect">
-						<p>Enough</p>
-					</div>
-					<div class="option" data-option="good" data-amount="4" data-bind="click: updatePileMaterialAmountSelect">
-						<p>Plenty</p>
-					</div>
-					<div class="option" data-option="lots" data-amount="5" data-bind="click: updatePileMaterialAmountSelect">
-						<p>Lots</p>
-					</div>
-					<div class="option" data-option="tons" data-amount="6" data-bind="click: updatePileMaterialAmountSelect">
-						<p>Tons</p>
+					<div class="chart chartnone">
+						<!-- ko if: materialAmount() == 4 -->
+							<img src="imgs/chart-tons.png" alt="tons amount chart" />
+						<!-- /ko -->
+						<!-- ko if: materialAmount() == 3 -->
+							<img src="imgs/chart-lots.png" alt="lots amount chart" />
+						<!-- /ko -->
+						<!-- ko if: materialAmount() == 2 -->
+							<img src="imgs/chart-some.png" alt="some amount chart" />
+						<!-- /ko -->
+						<!-- ko if: materialAmount() == 1 -->
+							<img src="imgs/chart-little.png" alt="little amount chart" />
+						<!-- /ko -->
+						<!-- ko if: materialAmount() == 0 -->
+							<img src="imgs/chart-none.png" alt="none amount chart" />
+						<!-- /ko -->
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -444,42 +443,36 @@
 		<div id="bottomrow">
 			<div id="actions" data-bind="style: {width: (viewportWidth())+'px'}">
 				<div class="inner">
-					<!--
-					<div id="action-home" class="action" data-action="home" data-bind="style: {display: createPileProcessActive() == false && updatePileProcessActive() == false ? 'block' : 'none'}, click: firstPage">
-						<div class="icon-home icon-large"></div>
-						<p>Pile On</p>
-					</div>
-					-->
 					<div id="action-back" class="action" data-action="back" data-bind="style: {display: (currentPage() == 1 || currentPage() == 2) && createPileProcessActive() == false && updatePileProcessActive() == false ? 'block' : 'none'}, click: prevPage">
-						<div class="icon-arrow-left icon-large"></div>
+						<div class="icon-action icon-action-arrowleft"></div>
 						<p>Back</p>
 					</div>
 					<div class="action" data-action="new" data-bind="style: {display: currentPage() == 0 && createPileProcessActive() == false && updatePileProcessActive() == false ? 'block' : 'none'}, click:  activateCreatePileProcess">
-						<div class="icon-plus icon-large"></div>
-						<p>New</p>
+						<div class="icon-action icon-action-new"></div>
+						<p>Create</p>
 					</div>
 					<div class="action" data-action="update" data-bind="style: {display: (currentPage() == 0 || currentPage() == 2) && createPileProcessActive() == false && updatePileProcessActive() == false ? 'block' : 'none'}, click: updatePile">
-						<div class="icon-refresh icon-large"></div>
-						<p>Status</p>
+						<div class="icon-action icon-action-update"></div>
+						<p>Update</p>
 					</div>
 					<div class="action" data-action="listview" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}, css: {'action-disabled': listViewActive() == true }, click: changeViewMode">
-						<div class="icon-reorder icon-large"></div>
+						<div class="icon-action icon-action-list"></div>
 						<p>List</p>
 					</div>
 					<div class="action" data-action="mapview" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}, css: {'action-disabled': mapViewActive() == true }, click: changeViewMode">
-						<div class="icon-map-marker icon-large"></div>
+						<div class="icon-action icon-action-pin"></div>
 						<p>Map</p>
 					</div>
 					<div class="action" data-action="yourlocation" data-bind="style: {display: currentPage() == 1 ? 'block' : 'none'}, click: locationForm">
-						<div class="icon-screenshot icon-large"></div>
+						<div class="icon-action icon-action-target"></div>
 						<p>Location</p>
 					</div>
 					<div id="action-ok" class="action" data-action="ok" data-bind="style: {display: createPileProcessActive() == true || updatePileProcessActive() == true ? 'block' : 'none'}, click: okActiveProcess">
-						<div class="icon-ok icon-large"></div>
+						<div class="icon-action icon-action-check"></div>
 						<p>OK</p>
 					</div>
 					<div class="action" data-action="cancel" data-bind="style: {display: createPileProcessActive() == true || updatePileProcessActive() == true ? 'block' : 'none'}, click: cancelActiveProcess">
-						<div class="icon-remove icon-large"></div>
+						<div class="icon-action icon-action-cancel"></div>
 						<p>Cancel</p>
 					</div>
 					
@@ -491,18 +484,70 @@
 		
 		<div id="debug"></div>
 		
-		<!-- ko if: isShowingAboutPage() == true -->
-		<div id="about">
+		<div id="about" data-bind="css: {aboutopen: isShowingMenu() == true}">
 			<div class="inner">
-				<h1>About</h1>
-				<p>PileOn is a web app that connects people to nearby, free piles of materials.</p>
-				<p>PileOn was initiated by <a href="http://www.opentwincities.org/">Open Twin Cities</a>, a <a href="http://codeforamerica.org/">Code for America</a> brigade, that focuses on improving civic technology for the Twin Cities area.</p>
-				<p>If you're interested in contributing (we need devs!), visit the PileOn <a href="https://github.com/skitley/PileOn-Prototype">github page</a>, or visit the <a href="https://groups.google.com/forum/#!topic/twin-cities-brigade/obapXOdsuAs">google group thread</a> discussing this app.</p>
-				<p>This prototype is currently not intended to work on all devices and/or browsers.</p>
-				<div class="action" data-bind="click:toggleAbout">OK</div>
+				<div class="login">
+					<h1>Login</h1>
+					<input type="text" value="username / email">
+					<input type="text" value="password">
+					<div class="btn-blue">
+						<div class="icon-bb-login"></div>
+						<div class="label">Login</div>
+					</div>
+				</div>
+				<hr />
+				<div class="btn-blue">
+					<div class="icon-bb-user"></div>
+					<div class="label">Register to add your piles!</div>
+				</div>
+				<hr />
+				<div class="whatis">
+					<h1>What is Pile On?</h1>
+					<p>Pile On is a web app that allows citizens to find free piles of materials near them.</p>
+					<p>We're currently in an early version of the app, so we're eager for any feedback you may have!</p>
+					<div class="btn-blue">
+						<div class="label">Send us feedback!</div>
+					</div>
+				</div>
+				<hr />
+				<div class="howworks">
+					<h1>How does it work?</h1>
+					<ol>
+						<li>Browse the categories and locations to find listed piles free for anyone to take.</li>
+						<li>Creating a pile requires that you login, or register if you are a new user.</li>
+						<li>Onve you've taken material from a pile, take a minute to update the pile status on Pile On so your neighbors have an up-to-date status of what's nearby them.</li>
+						<li>Piles that are listed with an amount status of "None" for 24 consecutive hours will be removed from Pile On.</li>
+						<li>All piles will be removed from Pile On after one week. This keeps things fresh!</li>
+					</ol>
+				</div>
 			</div>
+			
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			
+			<div class="topnav topnav-home" data-bind="css: {aboutnav: isShowingMenu() == true}">
+				<div class="menu" data-bind="click:toggleMenu">
+					<div class="btn">
+						<div class="icon-menu-close"></div>
+					</div>
+				</div>
+				<div class="logowrap">
+					<div class="logoimg">
+						<img src="imgs/logo.png" alt="pile on logo" />
+					</div>
+					<div class="logotitle">
+						<h1>Pile On</h1>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
 		</div>
-		<!-- /ko -->
 		
 	</body>
 	

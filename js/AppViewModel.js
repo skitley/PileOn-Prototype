@@ -33,7 +33,7 @@ function AppViewModel() {
 	self.materialAmount = ko.observable(0);
 	
 	// Toggles the state of the about page
-	self.isShowingAboutPage = ko.observable(false);
+	self.isShowingMenu = ko.observable(false);
 	
 	// Holds all the view data
 	self.categories = ko.observableArray([]);
@@ -253,12 +253,12 @@ function AppViewModel() {
 		alert('Location entry form coming soon.');
 	}
 	
-	self.toggleAbout = function() {
-		if (isShowingAboutPage() == false) {
-			isShowingAboutPage(true);
+	self.toggleMenu = function() {
+		if (isShowingMenu() == false) {
+			isShowingMenu(true);
 		}
 		else {
-			isShowingAboutPage(false);
+			isShowingMenu(false);
 		}
 	}
 	
